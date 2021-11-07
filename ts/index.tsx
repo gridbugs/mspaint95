@@ -1,5 +1,4 @@
-console.log('foo');
+import { h, Fragment, render } from 'preact';
+/** @jsx h */
 
-export function blah(): void {
-  console.log('hi');
-}
+render(<>hi</>, document.body);
