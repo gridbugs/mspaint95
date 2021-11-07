@@ -2,13 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { createStore, Action } from 'redux';
-import { Provider } from 'react-redux';
+import { Provider, useSelector } from 'react-redux';
 import { List } from 'immutable';
-import * as data from './data';
-import { shortcutText } from './data';
-import { ButtonMenuStrip } from './components';
+import { some, none } from 'fp-ts/Option';
+import * as model from './model';
+import * as controller from './controller';
+import { shortcutText } from './model';
+import { ButtonMenuStrip } from './view';
 
-const BUTTON_MENU_STRIP: data.ButtonMenuStrip = {
+const BUTTON_MENU_STRIP: model.ButtonMenuStrip = {
   buttonMenus: List([
     {
       button: { text: shortcutText('File'), state: 'Normal' },
@@ -19,6 +21,7 @@ const BUTTON_MENU_STRIP: data.ButtonMenuStrip = {
           { text: shortcutText('Open'), selected: false },
           { text: shortcutText('Save'), selected: false },
         ]),
+        selection: none,
       },
     },
     {
@@ -32,22 +35,30 @@ const BUTTON_MENU_STRIP: data.ButtonMenuStrip = {
           { text: shortcutText('Copy'), selected: false },
           { text: shortcutText('Paste'), selected: false },
         ]),
+        selection: some(2),
       },
     },
   ])
 };
 
-type UiState = data.ButtonMenuStrip;
-const UiStateInitial = BUTTON_MENU_STRIP;
+type UiState = model.ButtonMenuStrip;
 
-function reducer(state: UiState = UiStateInitial, action: Action): UiState {
-  console.log(action);
-  return state;
+interface RootState {
+  uiState: UiState,
+}
+
+const ROOT_STATE_DEFAULT = {
+  uiState: BUTTON_MENU_STRIP,
+};
+
+function reducer(state: RootState = ROOT_STATE_DEFAULT, action: Action): RootState {
+  return { ...state };
 }
 
 const store = createStore(reducer);
 
-function App({ uiState }: { uiState: UiState }): JSX.Element {
+function App(): JSX.Element {
+  const { uiState } = useSelector((state: RootState) => state);
   return <>
     { ButtonMenuStrip(uiState) }
   </>;
@@ -56,7 +67,7 @@ function App({ uiState }: { uiState: UiState }): JSX.Element {
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App uiState={store.getState()} />
+      <App />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root'),

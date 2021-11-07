@@ -1,4 +1,5 @@
 import { List } from 'immutable';
+import { Option } from 'fp-ts/Option';
 
 export interface ShortcutText {
   text: string,
@@ -11,11 +12,11 @@ export function shortcutText(text: string, shortcutPosition = 0): ShortcutText {
 
 export interface MenuItem {
   readonly text: ShortcutText,
-  readonly selected: boolean,
 }
 
 export interface Menu {
   readonly items: List<MenuItem>,
+  readonly selection: Option<number>,
 }
 
 export type ButtonState = 'Normal' | 'Hover' | 'Press';
