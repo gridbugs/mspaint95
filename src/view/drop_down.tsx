@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import * as option from 'fp-ts/Option';
 import { pipe } from 'fp-ts/function';
 import * as model from '../model/drop_down';
+import './style.css';
 
 type Idx<T> = T & { index: number };
 
