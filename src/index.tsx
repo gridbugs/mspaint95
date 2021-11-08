@@ -1,12 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { createStore, Action } from 'redux';
-import { Provider, useSelector } from 'react-redux';
+import { createStore, AnyAction } from 'redux';
+import { Provider, useSelector, useDispatch } from 'react-redux';
 import { List } from 'immutable';
-import { some, none } from 'fp-ts/Option';
 import * as model from './model';
-import * as controller from './controller';
 import { shortcutText } from './model';
 import { ButtonMenuStrip } from './view';
 
@@ -21,7 +19,6 @@ const BUTTON_MENU_STRIP: model.ButtonMenuStrip = {
           { text: shortcutText('Open'), selected: false },
           { text: shortcutText('Save'), selected: false },
         ]),
-        selection: none,
       },
     },
     {
@@ -31,11 +28,10 @@ const BUTTON_MENU_STRIP: model.ButtonMenuStrip = {
         items: List([
           { text: shortcutText('Undo'), selected: false },
           { text: shortcutText('Repeat'), selected: false },
-          { text: shortcutText('Cut'), selected: true },
+          { text: shortcutText('Cut'), selected: false },
           { text: shortcutText('Copy'), selected: false },
           { text: shortcutText('Paste'), selected: false },
         ]),
-        selection: some(2),
       },
     },
   ])
@@ -51,16 +47,35 @@ const ROOT_STATE_DEFAULT = {
   uiState: BUTTON_MENU_STRIP,
 };
 
-function reducer(state: RootState = ROOT_STATE_DEFAULT, action: Action): RootState {
-  return { ...state };
+interface SetUiStateAction extends AnyAction {
+  type: 'set-ui-state',
+  uiState: UiState,
+}
+
+function matchSetUiStateAction(action: AnyAction): action is SetUiStateAction {
+  return action.type === 'set-ui-state';
+}
+
+function reducer(state: RootState = ROOT_STATE_DEFAULT, action: AnyAction): RootState {
+  if (matchSetUiStateAction(action)) {
+    return { ...state, uiState: action.uiState };
+  }
+  return state;
 }
 
 const store = createStore(reducer);
 
 function App(): JSX.Element {
   const { uiState } = useSelector((state: RootState) => state);
+  const dispatch = useDispatch();
+  function updateButtonMenuStrip(buttonMenuStrip: model.ButtonMenuStrip): void {
+    dispatch({
+      type: 'set-ui-state',
+      uiState: buttonMenuStrip,
+    });
+  }
   return <>
-    { ButtonMenuStrip(uiState) }
+    { ButtonMenuStrip({ ...uiState, updateSelf: updateButtonMenuStrip }) }
   </>;
 }
 
