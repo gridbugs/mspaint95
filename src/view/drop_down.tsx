@@ -37,8 +37,13 @@ export function Menu({ items, updateSelf }: WithUpdateSelf<model.Menu>): JSX.Ele
   </ul>;
 }
 
-export function Button({ text }: model.Button): JSX.Element {
-  return ShortcutText(text);
+export function Button({ text, toggleMenuVisible }: model.Button & { toggleMenuVisible: () => void}): JSX.Element {
+  function onClick(): void {
+    toggleMenuVisible();
+  }
+  return <div onClick={onClick}>
+    {ShortcutText(text)}
+  </div>;
 }
 
 export function ButtonMenu({
@@ -47,8 +52,15 @@ export function ButtonMenu({
   function updateMenu(newMenu: model.Menu): void {
     updateSelf({ menu: newMenu, button, menuVisible });
   }
+  function toggleMenuVisible(): void {
+    updateSelf({
+      menu,
+      button,
+      menuVisible: !menuVisible,
+    });
+  }
   return <div>
-    { Button(button) }
+    { Button({ ...button, toggleMenuVisible }) }
     { menuVisible && Menu({ ...menu, updateSelf: updateMenu }) }
   </div>;
 }
