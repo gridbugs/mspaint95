@@ -30,9 +30,7 @@ export class App extends Component<RootProps, RootState> {
     };
     const { uiState } = this.state;
     return <>
-      bar
       { ButtonMenuStrip({ ...uiState, updateSelf: updateButtonMenuStrip }) }
-      baz
     </>;
   }
 }

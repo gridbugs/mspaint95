@@ -1,4 +1,4 @@
-import { h, render, Fragment } from 'preact';
+import { h, render } from 'preact';
 /** @jsx h */
 
 import { List } from 'immutable';
@@ -48,9 +48,6 @@ if (rootElement === null) {
 }
 
 render(
-  <>
-  foo
-  <App initialState={ROOT_STATE_DEFAULT} />
-  </>,
+  <App initialState={ROOT_STATE_DEFAULT} />,
   rootElement,
 );
