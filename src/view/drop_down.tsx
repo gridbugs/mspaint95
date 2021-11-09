@@ -1,4 +1,4 @@
-import { h, Fragment } from 'preact';
+import { h, Fragment, JSX } from 'preact';
 /** @jsx h */
 
 import * as model from '../model/drop_down';
@@ -32,7 +32,7 @@ export function Menu({ items, updateSelf }: WithUpdateSelf<model.Menu>): JSX.Ele
           });
         }
         return <li key={ i }>{ MenuItem({ ...item, updateSelf: updateMenuItem }) }</li>;
-      })
+      }).toArray()
     }
   </ul>;
 }
@@ -63,7 +63,7 @@ export function ButtonMenuStrip({ buttonMenus, updateSelf }: WithUpdateSelf<mode
           });
         }
         return <li key={ i }>{ ButtonMenu({ ...buttonMenu, updateSelf: updateButtonMenu }) }</li>;
-      })
+      }).toArray()
     }
   </ul>;
 }

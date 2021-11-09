@@ -1,4 +1,6 @@
-import { h, Fragment, Component } from 'preact';
+import {
+  h, Fragment, Component, JSX
+} from 'preact';
 /** @jsx h */
 
 import * as model from './model';
@@ -28,7 +30,9 @@ export class App extends Component<RootProps, RootState> {
     };
     const { uiState } = this.state;
     return <>
+      bar
       { ButtonMenuStrip({ ...uiState, updateSelf: updateButtonMenuStrip }) }
+      baz
     </>;
   }
 }
