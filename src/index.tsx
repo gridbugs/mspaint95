@@ -6,6 +6,8 @@ import * as model from './model';
 import { shortcutText } from './model';
 import { App } from './App';
 
+import './style.scss';
+
 const BUTTON_MENU_STRIP: model.ButtonMenuStrip = {
   buttonMenus: List([
     {

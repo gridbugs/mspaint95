@@ -16,24 +16,12 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.scss$/,
+        test: /\.s[ac]ss$/,
         use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              sourceMap: true,
-            },
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true,
-            },
-          },
+          "style-loader",
+          "css-loader",
+          "sass-loader",
         ],
-        exclude: /node_modules/
       },
     ],
   },
