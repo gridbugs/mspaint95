@@ -1,4 +1,6 @@
-import React from 'react';
+import { h, Fragment, Component } from 'preact';
+/** @jsx h */
+
 import * as model from './model';
 import { ButtonMenuStrip } from './view';
 
@@ -12,7 +14,7 @@ interface RootProps {
   initialState: RootState,
 }
 
-export class App extends React.Component<RootProps, RootState> {
+export class App extends Component<RootProps, RootState> {
   constructor(props: RootProps) {
     super(props);
     this.state = props.initialState;

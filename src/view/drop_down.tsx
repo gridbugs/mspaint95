@@ -1,4 +1,6 @@
-import React from 'react';
+import { h, Fragment } from 'preact';
+/** @jsx h */
+
 import * as model from '../model/drop_down';
 
 type WithUpdateSelf<T> = T & { updateSelf: (x: T) => void };

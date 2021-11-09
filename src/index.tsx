@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import { h, render } from 'preact';
+/** @jsx h */
 
 import { List } from 'immutable';
 import * as model from './model';
@@ -41,9 +41,13 @@ const ROOT_STATE_DEFAULT = {
   uiState: BUTTON_MENU_STRIP,
 };
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App initialState={ROOT_STATE_DEFAULT} />
-  </React.StrictMode>,
-  document.getElementById('root'),
+const rootElement = document.getElementById('root');
+
+if (rootElement === null) {
+  throw new Error('missing root element');
+}
+
+render(
+  <App initialState={ROOT_STATE_DEFAULT} />,
+  rootElement,
 );
