@@ -2,7 +2,7 @@
 
 pkgs.mkShell {
   packages = with pkgs; [
-    nodejs-16_x
+    nodejs-17_x
     nodePackages.typescript-language-server
   ];
 }
