@@ -33,4 +33,5 @@ export interface ButtonMenu {
 
 export interface ButtonMenuStrip {
   readonly buttonMenus: List<ButtonMenu>,
+  readonly active: boolean,
 }

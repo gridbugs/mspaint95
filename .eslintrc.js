@@ -15,7 +15,7 @@ module.exports = {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
   },
-  ignorePatterns: ['**/*.css', '**/*.scss'],
+  ignorePatterns: ['**/*.css', '**/*.scss', '**/*.otf'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 2018,

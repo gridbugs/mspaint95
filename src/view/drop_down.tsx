@@ -1,15 +1,16 @@
 import { h, Fragment, JSX } from 'preact';
 /** @jsx h */
 
-import * as model from '../model/drop_down';
+import * as m from '../model/drop_down';
+import * as c from '../controller/drop_down';
 
 type WithUpdateSelf<T> = T & { updateSelf: (x: T) => void };
 
-export function ShortcutText({ text }: model.ShortcutText): JSX.Element {
+export function ShortcutText({ text }: m.ShortcutText): JSX.Element {
   return <>{ text }</>;
 }
 
-export function MenuItem({ text, selected, updateSelf }: WithUpdateSelf<model.MenuItem>): JSX.Element {
+export function MenuItem({ text, selected, updateSelf }: WithUpdateSelf<m.MenuItem>): JSX.Element {
   function onMouseOver(): void {
     updateSelf({ text, selected: true });
   }
@@ -22,11 +23,11 @@ export function MenuItem({ text, selected, updateSelf }: WithUpdateSelf<model.Me
   </div>;
 }
 
-export function Menu({ items, updateSelf }: WithUpdateSelf<model.Menu>): JSX.Element {
-  return <ul>
+export function Menu({ items, updateSelf }: WithUpdateSelf<m.Menu>): JSX.Element {
+  return <ul className='menu'>
     {
       items.map((item, i) => {
-        function updateMenuItem(menuItem: model.MenuItem): void {
+        function updateMenuItem(menuItem: m.MenuItem): void {
           updateSelf({
             items: items.set(i, menuItem),
           });
@@ -37,45 +38,60 @@ export function Menu({ items, updateSelf }: WithUpdateSelf<model.Menu>): JSX.Ele
   </ul>;
 }
 
-export function Button({ text, toggleMenuVisible }: model.Button & { toggleMenuVisible: () => void}): JSX.Element {
-  function onClick(): void {
-    toggleMenuVisible();
-  }
-  return <div onClick={onClick}>
+export function Button({ text, onClick }: m.Button & { onClick: () => void}): JSX.Element {
+  return <div className='button' onClick={onClick}>
     {ShortcutText(text)}
   </div>;
 }
 
 export function ButtonMenu({
   button, menu, menuVisible, updateSelf
-}: WithUpdateSelf<model.ButtonMenu>): JSX.Element {
-  function updateMenu(newMenu: model.Menu): void {
+}: WithUpdateSelf<m.ButtonMenu>, index: number, controller: c.ButtonMenuStrip): JSX.Element {
+  function updateMenu(newMenu: m.Menu): void {
     updateSelf({ menu: newMenu, button, menuVisible });
   }
-  function toggleMenuVisible(): void {
-    updateSelf({
-      menu,
-      button,
-      menuVisible: !menuVisible,
-    });
+  function onMouseOver(): void {
+    if (controller.model.active) {
+      controller.displayMenu(index);
+    }
   }
-  return <div>
-    { Button({ ...button, toggleMenuVisible }) }
-    { menuVisible && Menu({ ...menu, updateSelf: updateMenu }) }
+  function onClick(): void {
+    if (controller.model.active) {
+      controller.deactivate();
+    } else {
+      controller.activate(index);
+    }
+  }
+  return <div className='buttonMenu' onMouseOver={onMouseOver}>
+    { Button({ ...button, onClick }) }
+    {
+      menuVisible && Menu({ ...menu, updateSelf: updateMenu })
+    }
   </div>;
 }
 
-export function ButtonMenuStrip({ buttonMenus, updateSelf }: WithUpdateSelf<model.ButtonMenuStrip>): JSX.Element {
-  return <ul>
+export function ButtonMenuStrip({
+  active, buttonMenus, updateSelf
+}: WithUpdateSelf<m.ButtonMenuStrip>): JSX.Element {
+  const controller = new c.ButtonMenuStrip({ active, buttonMenus }, updateSelf);
+  function onClick(): void {
+    console.log('a');
+  }
+  return <div className='buttonMenuStrip' onClick={onClick}>
     {
       buttonMenus.map((buttonMenu, i) => {
-        function updateButtonMenu(newButtonMenu: model.ButtonMenu): void {
+        function updateButtonMenu(newButtonMenu: m.ButtonMenu): void {
           updateSelf({
             buttonMenus: buttonMenus.set(i, newButtonMenu),
+            active,
           });
         }
-        return <li key={ i }>{ ButtonMenu({ ...buttonMenu, updateSelf: updateButtonMenu }) }</li>;
+        return <div key={ i }>
+          {
+            ButtonMenu({ ...buttonMenu, updateSelf: updateButtonMenu }, i, controller)
+          }
+        </div>;
       }).toArray()
     }
-  </ul>;
+  </div>;
 }

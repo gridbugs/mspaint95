@@ -9,10 +9,11 @@ import { App } from './App';
 import './style.scss';
 
 const BUTTON_MENU_STRIP: model.ButtonMenuStrip = {
+  active: false,
   buttonMenus: List([
     {
       button: { text: shortcutText('File'), state: 'Normal' },
-      menuVisible: true,
+      menuVisible: false,
       menu: {
         items: List([
           { text: shortcutText('New'), selected: false },
@@ -23,7 +24,7 @@ const BUTTON_MENU_STRIP: model.ButtonMenuStrip = {
     },
     {
       button: { text: shortcutText('Edit'), state: 'Normal' },
-      menuVisible: true,
+      menuVisible: false,
       menu: {
         items: List([
           { text: shortcutText('Undo'), selected: false },

@@ -1,3 +1,49 @@
-.menuItemSelected {
+@font-face {
+    font-family: W95FA;
+    src: url(./font/W95FA.otf);
+}
+
+* {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-family: W95FA;
+    padding: 0px;
+    margin: 0px;
+}
+
+div.menuItemSelected {
   background: blue;
+}
+
+div.buttonMenuStrip {
+  display: inline-block;
+  position: relative;
+}
+
+div.buttonMenuStrip > div {
+  display: inline-block;
+  position: relative;
+  padding-right: 5px;
+}
+
+div.buttonMenu {
+  display: inline-block;
+}
+
+div.button {
+  display: inline-block;
+}
+
+ul.menu {
+  position: absolute;
+  margin: 0px;
+  padding: 0px;
+}
+
+ul.menu > li {
+  list-style-type: none;
 }
