@@ -3,10 +3,10 @@ import {
 } from 'preact';
 /** @jsx h */
 
-import * as model from './model';
-import { ButtonMenuStrip } from './view';
+import * as m from './model';
+import * as v from './view';
 
-type UiState = model.ButtonMenuStrip;
+type UiState = m.ButtonMenuStrip;
 
 interface RootState {
   uiState: UiState,
@@ -30,7 +30,7 @@ export class App extends Component<RootProps, RootState> {
     };
     const { uiState } = this.state;
     return <>
-      { ButtonMenuStrip({ model: uiState, update: updateButtonMenuStrip }) }
+      { v.Container({ model: uiState, update: updateButtonMenuStrip }) }
     </>;
   }
 }

@@ -1,5 +1,5 @@
-import * as m from '../model/drop_down';
-import { Controller } from './controller';
+import * as m from '../model';
+import { Controller } from '.';
 
 export function displayDropDownMenu(menuIndex: number): Controller<m.ButtonMenuStrip> {
   return (model) => ({

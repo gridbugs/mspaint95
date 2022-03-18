@@ -1,3 +1,5 @@
+$scale: 2;
+
 @font-face {
     font-family: W95FA;
     src: url(./font/W95FA.otf);
@@ -11,23 +13,63 @@
     -ms-user-select: none;
     user-select: none;
     font-family: W95FA;
-    padding: 0px;
-    margin: 0px;
+    font-size: $scale * 24px;
+    padding: 0;
+    margin: 0;
 }
 
-div.menuItemSelected {
-  background: blue;
+div.container {
+  background: #c3c7cb;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+div.container > div {
+  border-top: $scale * 2px solid #ffffff;
+  border-left: $scale * 2px solid #ffffff;
+  border-bottom: $scale * 2px solid #868a8e;
+  border-right: $scale * 2px solid #868a8e;
+  position: absolute;
+  top: $scale * 2px;
+  bottom: $scale * 2px;
+  left: $scale * 2px;
+  right: $scale * 2px;
+}
+
+div.title {
+  background-color: #0000aa;
+  color: #ffffff;
+  font-weight: bold;
+  position: absolute;
+  top: $scale * 4px;
+  height: $scale * 26px;
+  left: $scale * 4px;
+  right: $scale * 4px;
+  padding-top: $scale * 8px;
+  padding-left: $scale * 2px;
 }
 
 div.buttonMenuStrip {
   display: inline-block;
-  position: relative;
+  position: absolute;
+  top: $scale * 42px;
+  height: $scale * 31px;
+  left: $scale * 4px;
+  right: $scale * 4px;
+
+}
+
+div.menuItemSelected {
+  background-color: #0000aa;
+  color: #ffffff;
 }
 
 div.buttonMenuStrip > div {
   display: inline-block;
   position: relative;
-  padding-right: 5px;
 }
 
 div.buttonMenu {
@@ -36,14 +78,61 @@ div.buttonMenu {
 
 div.button {
   display: inline-block;
+  padding-left: $scale * 10px;
+  padding-right: $scale * 10px;
+  padding-top: $scale * 4px;
+  padding-bottom: $scale * 4px;
 }
 
 ul.menu {
   position: absolute;
-  margin: 0px;
-  padding: 0px;
+  border-top: $scale * 2px solid #ffffff;
+  border-left: $scale * 2px solid #ffffff;
+  border-bottom: $scale * 2px solid #868a8e;
+  border-right: $scale * 2px solid #868a8e;
+  margin: 0 auto;
+  text-align: left;
+  width: auto;
+  padding: 5px 0px;
+  white-space: nowrap;
 }
 
 ul.menu > li {
   list-style-type: none;
+}
+
+div.separator {
+  position: relative;
+  width: 100%;
+  border-top: $scale * 2px solid #868a8e;
+  border-bottom: $scale * 2px solid #ffffff;
+  margin-top: $scale * 10px;
+  margin-bottom: $scale * 10px;
+}
+
+div.menuItem {
+  display: flex;
+  padding-top: $scale * 2px;
+  padding-bottom: $scale * 2px;
+}
+
+div.leftContainer {
+  display: inline-block;
+}
+
+div.menuItem div.tickContainer {
+  display: inline-block;
+  width: $scale * 30px;
+  text-align: center;
+}
+div.menuItem div.nameContainer {
+  display: inline-block;
+}
+div.menuItem div.shortcutContainer {
+  display: inline-block;
+  text-align: right;
+  padding-right: 30px;
+  padding-left: 30px;
+  margin-left: auto;
+  margin-right: 0;
 }

@@ -1,9 +1,10 @@
 import { h, Fragment, JSX } from 'preact';
 /** @jsx h */
 
-import * as m from '../model/drop_down';
-import * as c from '../controller/drop_down';
-import { Ctx, go } from './ctx';
+import { isSome } from 'fp-ts/Option';
+import * as m from '../model';
+import * as c from '../controller';
+import { Ctx, go } from '.';
 
 export function ShortcutText({ text }: m.ShortcutText): JSX.Element {
   return <>{ text }</>;
@@ -16,9 +17,19 @@ export function MenuItem(ctx: Ctx<m.MenuItem>): JSX.Element {
   function onMouseLeave(): void {
     ctx.update({ ...ctx.model, selected: false });
   }
-  const className = ctx.model.selected ? 'menuItemSelected' : '';
+  const className = `menuItem ${ctx.model.selected ? 'menuItemSelected' : ''}`;
   return <div onMouseOver={onMouseOver} onMouseLeave={onMouseLeave} className={className}>
+    <div className='leftContainer'>
+    <div className='tickContainer'>
+    { ctx.model.tick ? '✓' : '' }
+    </div>
+    <div className='nameContainer'>
     { ShortcutText(ctx.model.text) }
+    </div>
+    </div>
+    <div className='shortcutContainer'>
+    { isSome(ctx.model.shortcut) ? ctx.model.shortcut.value : '' }
+    </div>
   </div>;
 }
 
@@ -26,6 +37,9 @@ export function Menu(ctx: Ctx<m.Menu>): JSX.Element {
   return <ul className='menu'>
     {
       ctx.model.items.map((item, i) => {
+        if (item === 'Separator') {
+          return <div className='separator'></div>;
+        }
         const menuItemCtx = {
           model: item,
           update: (menuItem: m.MenuItem) => ctx.update({
@@ -38,8 +52,9 @@ export function Menu(ctx: Ctx<m.Menu>): JSX.Element {
   </ul>;
 }
 
-export function Button({ text, onClick }: m.Button & { onClick: () => void}): JSX.Element {
-  return <div className='button' onClick={onClick}>
+export function Button({ text, onClick }: m.Button & { onClick: () => void}, selected: boolean): JSX.Element {
+  const className = `button ${selected ? 'menuItemSelected' : ''}`;
+  return <div className={className} onClick={onClick}>
     {ShortcutText(text)}
   </div>;
 }
@@ -69,7 +84,7 @@ export function ButtonMenu(
     }
   }
   return <div className='buttonMenu' onMouseOver={onMouseOver}>
-    { Button({ ...ctx.model.button, onClick }) }
+    { Button({ ...ctx.model.button, onClick }, ctx.model.menuVisible) }
     {
       ctx.model.menuVisible && Menu(menuCtx)
     }
