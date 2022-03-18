@@ -3,36 +3,36 @@ import { h, Fragment, JSX } from 'preact';
 
 import * as m from '../model/drop_down';
 import * as c from '../controller/drop_down';
-
-type WithUpdateSelf<T> = T & { updateSelf: (x: T) => void };
+import { Ctx, go } from './ctx';
 
 export function ShortcutText({ text }: m.ShortcutText): JSX.Element {
   return <>{ text }</>;
 }
 
-export function MenuItem({ text, selected, updateSelf }: WithUpdateSelf<m.MenuItem>): JSX.Element {
+export function MenuItem(ctx: Ctx<m.MenuItem>): JSX.Element {
   function onMouseOver(): void {
-    updateSelf({ text, selected: true });
+    ctx.update({ ...ctx.model, selected: true });
   }
   function onMouseLeave(): void {
-    updateSelf({ text, selected: false });
+    ctx.update({ ...ctx.model, selected: false });
   }
-  const className = selected ? 'menuItemSelected' : '';
+  const className = ctx.model.selected ? 'menuItemSelected' : '';
   return <div onMouseOver={onMouseOver} onMouseLeave={onMouseLeave} className={className}>
-    { ShortcutText(text) }
+    { ShortcutText(ctx.model.text) }
   </div>;
 }
 
-export function Menu({ items, updateSelf }: WithUpdateSelf<m.Menu>): JSX.Element {
+export function Menu(ctx: Ctx<m.Menu>): JSX.Element {
   return <ul className='menu'>
     {
-      items.map((item, i) => {
-        function updateMenuItem(menuItem: m.MenuItem): void {
-          updateSelf({
-            items: items.set(i, menuItem),
-          });
-        }
-        return <li key={ i }>{ MenuItem({ ...item, updateSelf: updateMenuItem }) }</li>;
+      ctx.model.items.map((item, i) => {
+        const menuItemCtx = {
+          model: item,
+          update: (menuItem: m.MenuItem) => ctx.update({
+            items: ctx.model.items.set(i, menuItem),
+          }),
+        };
+        return <li key={ i }>{ MenuItem(menuItemCtx) }</li>;
       }).toArray()
     }
   </ul>;
@@ -44,51 +44,52 @@ export function Button({ text, onClick }: m.Button & { onClick: () => void}): JS
   </div>;
 }
 
-export function ButtonMenu({
-  button, menu, menuVisible, updateSelf
-}: WithUpdateSelf<m.ButtonMenu>, index: number, controller: c.ButtonMenuStrip): JSX.Element {
-  function updateMenu(newMenu: m.Menu): void {
-    updateSelf({ menu: newMenu, button, menuVisible });
-  }
+export function ButtonMenu(
+  ctx: Ctx<m.ButtonMenu>,
+  topCtx: Ctx<m.ButtonMenuStrip>,
+  index: number,
+): JSX.Element {
+  const menuCtx = {
+    model: ctx.model.menu,
+    update: (newMenu: m.Menu) => ctx.update({
+      ...ctx.model,
+      menu: newMenu,
+    }),
+  };
   function onMouseOver(): void {
-    if (controller.model.active) {
-      controller.displayMenu(index);
+    if (topCtx.model.active) {
+      go(topCtx, c.displayDropDownMenu(index));
     }
   }
   function onClick(): void {
-    if (controller.model.active) {
-      controller.deactivate();
+    if (topCtx.model.active) {
+      go(topCtx, c.deativateDropDownMenu);
     } else {
-      controller.activate(index);
+      go(topCtx, c.activateDropDownMenu(index));
     }
   }
   return <div className='buttonMenu' onMouseOver={onMouseOver}>
-    { Button({ ...button, onClick }) }
+    { Button({ ...ctx.model.button, onClick }) }
     {
-      menuVisible && Menu({ ...menu, updateSelf: updateMenu })
+      ctx.model.menuVisible && Menu(menuCtx)
     }
   </div>;
 }
 
-export function ButtonMenuStrip({
-  active, buttonMenus, updateSelf
-}: WithUpdateSelf<m.ButtonMenuStrip>): JSX.Element {
-  const controller = new c.ButtonMenuStrip({ active, buttonMenus }, updateSelf);
-  function onClick(): void {
-    console.log('a');
-  }
-  return <div className='buttonMenuStrip' onClick={onClick}>
+export function ButtonMenuStrip(ctx: Ctx<m.ButtonMenuStrip>): JSX.Element {
+  return <div className='buttonMenuStrip'>
     {
-      buttonMenus.map((buttonMenu, i) => {
-        function updateButtonMenu(newButtonMenu: m.ButtonMenu): void {
-          updateSelf({
-            buttonMenus: buttonMenus.set(i, newButtonMenu),
-            active,
-          });
-        }
+      ctx.model.buttonMenus.map((buttonMenu, i) => {
+        const buttonMenuCtx = {
+          model: buttonMenu,
+          update: (newButtonMenu: m.ButtonMenu) => ctx.update({
+            ...ctx.model,
+            buttonMenus: ctx.model.buttonMenus.set(i, newButtonMenu),
+          }),
+        };
         return <div key={ i }>
           {
-            ButtonMenu({ ...buttonMenu, updateSelf: updateButtonMenu }, i, controller)
+            ButtonMenu(buttonMenuCtx, ctx, i)
           }
         </div>;
       }).toArray()
