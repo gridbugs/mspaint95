@@ -1,5 +1,7 @@
 import { h, JSX } from 'preact';
-import { useEffect, useRef, MutableRef } from 'preact/hooks';
+import {
+  useEffect, useRef, MutableRef, useState
+} from 'preact/hooks';
 /** @jsx h */
 
 import * as m from '../model';
@@ -7,24 +9,51 @@ import * as v from '../view';
 import * as c from '../controller';
 import { Ctx, go } from '.';
 
-export function Container(buttonMenuStripCtx: Ctx<m.ButtonMenuStrip>): JSX.Element {
+export function Container(
+  ctx: Ctx<m.Container>,
+  setDropDownMenu: (buttonMenuStrip: m.ButtonMenuStrip) => void,
+): JSX.Element {
   const dropdownAreaRef: MutableRef<HTMLDivElement | null> = useRef(null);
 
-  function handleClickOutside(event: MouseEvent): void {
-    if (dropdownAreaRef.current !== null) {
-      const path = (event.composedPath && event.composedPath());
-      if (!path.includes(dropdownAreaRef.current)) {
-        go(buttonMenuStripCtx, c.deativateDropDownMenu);
-      }
-    }
-  }
+  const buttonMenuStripCtx = {
+    model: ctx.model.buttonMenuStrip,
+    update: (buttonMenuStrip: m.ButtonMenuStrip) => ctx.update({
+      ...ctx.model,
+      buttonMenuStrip,
+    }),
+  };
+
+  const leftPanelCtx = {
+    model: ctx.model.leftPanel,
+    update: (leftPanel: m.LeftPanel) => ctx.update({
+      ...ctx.model,
+      leftPanel,
+    }),
+  };
+
+  const colorPickerCtx = {
+    model: ctx.model.colorPicker,
+    update: (colorPicker: m.ColorPicker) => ctx.update({
+      ...ctx.model,
+      colorPicker,
+    }),
+  };
 
   useEffect(() => {
+    function handleClickOutside(event: MouseEvent): void {
+      if (dropdownAreaRef.current !== null) {
+        const path = event.composedPath();
+        if (!path.includes(dropdownAreaRef.current)) {
+          setDropDownMenu(c.deativateDropDownMenu(buttonMenuStripCtx.model));
+        }
+      }
+    }
+
     document.addEventListener('click', handleClickOutside);
     return () => {
       document.removeEventListener('click', handleClickOutside);
     };
-  }, []);
+  }, [ctx.model]);
 
   return <div className='container'>
       <div>
@@ -39,12 +68,18 @@ export function Container(buttonMenuStripCtx: Ctx<m.ButtonMenuStrip>): JSX.Eleme
         <div className='leftPanelArea'>
           <div className='leftPanelTop'>
           </div>
+          { v.LeftPanel(leftPanelCtx) }
           <div className='leftPanelBottom'>
           </div>
         </div>
         <div className='drawAreaContainer'>
           <div>
           </div>
+        </div>
+        <div className='colorPickerContainer'>
+        {
+          v.ColorPicker(colorPickerCtx)
+        }
         </div>
       </div>
     </div>;

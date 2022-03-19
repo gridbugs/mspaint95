@@ -1,6 +1,8 @@
 import { Controller } from '../controller';
 
 export * from './drop_down';
+export * from './color_picker';
+export * from './left_panel';
 export * from './container';
 
 export type Update<T> = (x: T) => void;

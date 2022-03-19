@@ -16,6 +16,8 @@ $scale: 1;
     font-size: $scale * 24px;
     padding: 0;
     margin: 0;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
 }
 
 div.container {
@@ -160,7 +162,7 @@ div.leftPanelArea {
   position: absolute;
   left: 0;
   width: $scale * 96px;
-  top: $scale * 74px;
+  top: $scale * 78px;
   bottom: $scale * 127px;
   margin-left: $scale * 4px;
   margin-right: $scale * 4px;
@@ -173,6 +175,7 @@ div.leftPanelArea > div.leftPanelTop {
   top: 0;
   left: 0;
   right: 0;
+  z-index: 1;
 }
 
 div.leftPanelArea > div.leftPanelBottom {
@@ -182,11 +185,12 @@ div.leftPanelArea > div.leftPanelBottom {
   bottom: 0;
   left: 0;
   right: 0;
+  z-index: 1;
 }
 
 div.drawAreaContainer {
   position: absolute;
-  top: $scale * 74px;
+  top: $scale * 78px;
   bottom: $scale * 127px;
   left: $scale * 104px;
   right: $scale * 5px;
@@ -207,4 +211,165 @@ div.drawAreaContainer > div {
   border-bottom: $scale * 2px solid #c3c7cb;
   border-right: $scale * 2px solid #c3c7cb;
   background-color: #868a8e;
+}
+
+div.colorSwatches {
+  display: inline-block;
+}
+
+div.colorPickerContainer {
+  position: absolute;
+  bottom: $scale * 60px;
+  height: $scale * 60px;
+  left: $scale * 5px;
+}
+
+div.colorCellContainer {
+  display: inline-block;
+  position: relative;
+  width: $scale * 30px;
+  height: $scale * 30px;
+  border-top: $scale * 2px solid #868a8e;
+  border-left: $scale * 2px solid #868a8e;
+  border-bottom: $scale * 2px solid #ffffff;
+  border-right: $scale * 2px solid #ffffff;
+}
+
+div.colorCell {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-top: $scale * 2px solid #000000;
+  border-left: $scale * 2px solid #000000;
+  border-bottom: $scale * 2px solid #c3c7cb;
+  border-right: $scale * 2px solid #c3c7cb;
+}
+
+div.currentColorsContainer {
+  position: relative;
+  display: inline-block;
+  height: $scale * 64px;
+  width: $scale * 64px;
+  border-top: $scale * 2px solid #868a8e;
+  border-left: $scale * 2px solid #868a8e;
+  border-bottom: $scale * 2px solid #ffffff;
+  border-right: $scale * 2px solid #ffffff;
+}
+
+div.currentColors {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-top: $scale * 2px solid #000000;
+  border-left: $scale * 2px solid #000000;
+  border-bottom: $scale * 2px solid #c3c7cb;
+  border-right: $scale * 2px solid #c3c7cb;
+  background: url(./images/transparent_4x4.png) repeat;
+}
+
+
+div.currentCellContainer {
+  display: inline-block;
+  position: relative;
+  width: $scale * 30px;
+  height: $scale * 30px;
+  border-top: $scale * 2px solid #ffffff;
+  border-left: $scale * 2px solid #ffffff;
+  border-bottom: $scale * 2px solid #868a8e;
+  border-right: $scale * 2px solid #868a8e;
+}
+
+div.currentCell {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border: $scale * 2px solid #c3c7cb;
+}
+
+div.currentColors > div.fg {
+  position: absolute;
+  top: $scale * 5px;
+  left: $scale * 5px;
+  z-index: 1;
+}
+
+div.currentColors > div.bg {
+  position: absolute;
+  bottom: $scale * 5px;
+  right: $scale * 5px;
+}
+
+div.leftPanel {
+  padding-top: $scale * 2px;
+  padding-left: $scale * 8px;
+}
+
+div.leftPanelButtonContainer {
+  display: inline-block;
+  position: relative;
+  width: $scale * 38px;
+  height: $scale * 38px;
+  border-top: $scale * 2px solid #ffffff;
+  border-left: $scale * 2px solid #ffffff;
+  border-bottom: $scale * 2px solid #000000;
+  border-right: $scale * 2px solid #000000;
+}
+
+div.leftPanelButtonContainerPressing {
+  border-top: $scale * 2px solid #000000;
+  border-left: $scale * 2px solid #000000;
+  border-bottom: $scale * 2px solid #ffffff;
+  border-right: $scale * 2px solid #ffffff;
+}
+
+div.leftPanelButtonContainerSelected {
+  border-top: $scale * 2px solid #000000;
+  border-left: $scale * 2px solid #000000;
+  border-bottom: $scale * 2px solid #ffffff;
+  border-right: $scale * 2px solid #ffffff;
+  background: url(./images/transparent_4x4.png) repeat;
+  background-position: top $scale * -0.2px left $scale * 1.9px;
+}
+
+div.leftPanelButton {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-top: $scale * 2px solid #c3c7cb;
+  border-left: $scale * 2px solid #c3c7cb;
+  border-bottom: $scale * 2px solid #868a8e;
+  border-right: $scale * 2px solid #868a8e;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+div.leftPanelButtonPressing {
+  border-top: $scale * 2px solid #868a8e;
+  border-left: $scale * 2px solid #868a8e;
+  border-bottom: $scale * 2px solid #c3c7cb;
+  border-right: $scale * 2px solid #c3c7cb;
+  background-position: top $scale * 2px left $scale * 2px;
+}
+
+div.leftPanelButtonSelected {
+  border-top: $scale * 2px solid #868a8e;
+  border-left: $scale * 2px solid #868a8e;
+  border-bottom: $scale * 2px solid #c3c7cb;
+  border-right: $scale * 2px solid #c3c7cb;
+}
+
+.pencil {
+  background-image: url(./images/pencil.png);
+}
+
+.fill {
+  background-image: url(./images/fill.png);
 }

@@ -23,6 +23,10 @@ module.exports = {
           "sass-loader",
         ],
       },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+      },
     ],
   },
   resolve: {
@@ -34,7 +38,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './static/index.html',
+      template: './index.html',
       filename: 'index.html',
     }),
     new ESLintPlugin({

@@ -6,10 +6,11 @@ import {
 import * as m from './model';
 import * as v from './view';
 
-type UiState = m.ButtonMenuStrip;
-
 interface RootState {
-  uiState: UiState,
+  leftPanel: m.LeftPanel,
+  buttonMenuStrip: m.ButtonMenuStrip,
+  colorPicker: m.ColorPicker,
+
 }
 
 interface RootProps {
@@ -23,14 +24,14 @@ export class App extends Component<RootProps, RootState> {
   }
 
   render(): JSX.Element {
-    const updateButtonMenuStrip = (uiState: UiState): void => {
-      this.setState({
-        uiState
-      });
+    const updateUiState = (container: m.Container): void => {
+      this.setState(container);
     };
-    const { uiState } = this.state;
+    const setDropDownMenu = (buttonMenuStrip: m.ButtonMenuStrip): void => {
+      this.setState({ buttonMenuStrip });
+    };
     return <>
-      { v.Container({ model: uiState, update: updateButtonMenuStrip }) }
+      { v.Container({ model: this.state, update: updateUiState }, setDropDownMenu) }
     </>;
   }
 }

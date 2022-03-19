@@ -129,12 +129,55 @@ const BUTTON_MENU_STRIP: model.ButtonMenuStrip = {
         ]),
       },
     },
-
   ])
 };
 
+const LEFT_PANEL: model.LeftPanel = {
+  buttons: List([
+    { imageClass: 'pencil', state: 'Deselected' },
+    { imageClass: 'fill', state: 'Deselected' },
+  ]),
+};
+
+const COLOR_PICKER: model.ColorPicker = {
+  fg: '#000000',
+  bg: '#ffffff',
+  palette: List([
+    '#000000',
+    '#808080',
+    '#800000',
+    '#808000',
+    '#008000',
+    '#008080',
+    '#000080',
+    '#800080',
+    '#808040',
+    '#004040',
+    '#0080ff',
+    '#004080',
+    '#4000ff',
+    '#804000',
+    '#ffffff',
+    '#c0c0c0',
+    '#ff0000',
+    '#ffff00',
+    '#00ff00',
+    '#00ffff',
+    '#0000ff',
+    '#ff00ff',
+    '#ffff80',
+    '#00ff80',
+    '#80ffff',
+    '#8080ff',
+    '#ff0080',
+    '#ff8040',
+  ]),
+};
+
 const ROOT_STATE_DEFAULT = {
-  uiState: BUTTON_MENU_STRIP,
+  buttonMenuStrip: BUTTON_MENU_STRIP,
+  leftPanel: LEFT_PANEL,
+  colorPicker: COLOR_PICKER,
 };
 
 const rootElement = document.getElementById('root');
