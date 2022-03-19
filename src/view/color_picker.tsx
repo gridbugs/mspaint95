@@ -51,7 +51,7 @@ export function ColorPicker(ctx: Ctx<m.ColorPicker>): JSX.Element {
         { colors.slice(0, colors.length / 2).map((x, i) => Cell(x, i, ctx)) }
       </div>
       <div>
-        { colors.slice(colors.length / 2).map((x, i) => Cell(x, i, ctx)) }
+        { colors.slice(colors.length / 2).map((x, i) => Cell(x, (colors.length / 2) + i, ctx)) }
       </div>
     </div>
   </div>;

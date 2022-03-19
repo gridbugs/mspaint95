@@ -211,7 +211,10 @@ div.drawAreaContainer > div {
   border-bottom: $scale * 2px solid #c3c7cb;
   border-right: $scale * 2px solid #c3c7cb;
   background-color: #868a8e;
+  padding: $scale * 2px;
 }
+
+canvas.drawCanvas {}
 
 div.colorSwatches {
   display: inline-block;

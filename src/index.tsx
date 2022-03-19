@@ -134,8 +134,8 @@ const BUTTON_MENU_STRIP: model.ButtonMenuStrip = {
 
 const LEFT_PANEL: model.LeftPanel = {
   buttons: List([
-    { imageClass: 'pencil', state: 'Deselected' },
-    { imageClass: 'fill', state: 'Deselected' },
+    { imageClass: 'pencil', state: 'Deselected', tool: 'Pencil' },
+    { imageClass: 'fill', state: 'Deselected', tool: 'Fill' },
   ]),
 };
 

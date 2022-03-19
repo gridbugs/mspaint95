@@ -4,6 +4,7 @@ export * from './drop_down';
 export * from './color_picker';
 export * from './left_panel';
 export * from './container';
+export * from './draw_area';
 
 export type Update<T> = (x: T) => void;
 

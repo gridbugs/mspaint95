@@ -1,13 +1,13 @@
 import { h, JSX } from 'preact';
 import {
-  useEffect, useRef, MutableRef, useState
+  useEffect, useRef, MutableRef
 } from 'preact/hooks';
 /** @jsx h */
 
 import * as m from '../model';
 import * as v from '../view';
 import * as c from '../controller';
-import { Ctx, go } from '.';
+import { Ctx } from '.';
 
 export function Container(
   ctx: Ctx<m.Container>,
@@ -74,6 +74,9 @@ export function Container(
         </div>
         <div className='drawAreaContainer'>
           <div>
+          {
+            v.DrawArea(ctx.model.colorPicker.fg, m.selectedTool(ctx.model.leftPanel))
+          }
           </div>
         </div>
         <div className='colorPickerContainer'>
