@@ -25,11 +25,8 @@ export interface Menu {
   readonly items: List<MenuItem | Separator>,
 }
 
-export type ButtonState = 'Normal' | 'Hover' | 'Press';
-
 export interface Button {
   readonly text: ShortcutText,
-  readonly state: ButtonState,
 }
 
 export interface ButtonMenu {

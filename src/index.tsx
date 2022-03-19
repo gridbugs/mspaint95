@@ -18,7 +18,7 @@ const BUTTON_MENU_STRIP: model.ButtonMenuStrip = {
   active: false,
   buttonMenus: List([
     {
-      button: { text: shortcutText('File'), state: 'Normal' },
+      button: { text: shortcutText('File') },
       menuVisible: false,
       menu: {
         items: List([
@@ -41,7 +41,7 @@ const BUTTON_MENU_STRIP: model.ButtonMenuStrip = {
       },
     },
     {
-      button: { text: shortcutText('Edit'), state: 'Normal' },
+      button: { text: shortcutText('Edit') },
       menuVisible: false,
       menu: {
         items: List([
@@ -60,7 +60,7 @@ const BUTTON_MENU_STRIP: model.ButtonMenuStrip = {
       },
     },
     {
-      button: { text: shortcutText('View'), state: 'Normal' },
+      button: { text: shortcutText('View') },
       menuVisible: false,
       menu: {
         items: List([
@@ -94,7 +94,7 @@ const BUTTON_MENU_STRIP: model.ButtonMenuStrip = {
       },
     },
     {
-      button: { text: shortcutText('Image'), state: 'Normal' },
+      button: { text: shortcutText('Image') },
       menuVisible: false,
       menu: {
         items: List([
@@ -107,7 +107,7 @@ const BUTTON_MENU_STRIP: model.ButtonMenuStrip = {
       },
     },
     {
-      button: { text: shortcutText('Options'), state: 'Normal' },
+      button: { text: shortcutText('Options') },
       menuVisible: false,
       menu: {
         items: List([
@@ -119,7 +119,7 @@ const BUTTON_MENU_STRIP: model.ButtonMenuStrip = {
       },
     },
     {
-      button: { text: shortcutText('Help'), state: 'Normal' },
+      button: { text: shortcutText('Help') },
       menuVisible: false,
       menu: {
         items: List([
