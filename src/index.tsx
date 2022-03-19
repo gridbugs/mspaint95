@@ -19,7 +19,7 @@ const BUTTON_MENU_STRIP: model.ButtonMenuStrip = {
   buttonMenus: List([
     {
       button: { text: shortcutText('File'), state: 'Normal' },
-      menuVisible: true,
+      menuVisible: false,
       menu: {
         items: List([
           { ...D, text: shortcutText('New'), shortcut: some('Ctrl+N') },

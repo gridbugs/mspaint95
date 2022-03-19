@@ -19,7 +19,7 @@ $scale: 1;
 }
 
 div.container {
-  background: #c3c7cb;
+  background-color: #c3c7cb;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -45,11 +45,11 @@ div.title {
   font-weight: bold;
   position: absolute;
   top: $scale * 4px;
-  height: $scale * 26px;
   left: $scale * 4px;
   right: $scale * 4px;
-  padding-top: $scale * 8px;
-  padding-left: $scale * 2px;
+  padding-top: $scale * 5px;
+  padding-bottom: $scale * 5px;
+  padding-left: $scale * 10px;
 }
 
 div.buttonMenuStrip {
@@ -83,18 +83,31 @@ div.button {
   padding-top: $scale * 4px;
   padding-bottom: $scale * 4px;
 }
+div.button:hover {
+  background-color: #0000aa;
+  color: #ffffff;
+}
+
+div.menuContainer {
+  position: absolute;
+  border-top: $scale * 2px solid #c3c7cb;
+  border-left: $scale * 2px solid #c3c7cb;
+  border-bottom: $scale * 2px solid #000000;
+  border-right: $scale * 2px solid #000000;
+  margin: 0 auto;
+  text-align: left;
+  width: auto;
+  white-space: nowrap;
+  z-index: 2;
+  background-color: #c3c7cb;
+}
 
 ul.menu {
-  position: absolute;
   border-top: $scale * 2px solid #ffffff;
   border-left: $scale * 2px solid #ffffff;
   border-bottom: $scale * 2px solid #868a8e;
   border-right: $scale * 2px solid #868a8e;
-  margin: 0 auto;
-  text-align: left;
-  width: auto;
   padding: 5px 0px;
-  white-space: nowrap;
 }
 
 ul.menu > li {
@@ -125,9 +138,11 @@ div.menuItem div.tickContainer {
   width: $scale * 30px;
   text-align: center;
 }
+
 div.menuItem div.nameContainer {
   display: inline-block;
 }
+
 div.menuItem div.shortcutContainer {
   display: inline-block;
   text-align: right;
@@ -135,4 +150,61 @@ div.menuItem div.shortcutContainer {
   padding-left: 30px;
   margin-left: auto;
   margin-right: 0;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+div.leftPanelArea {
+  position: absolute;
+  left: 0;
+  width: $scale * 96px;
+  top: $scale * 74px;
+  bottom: $scale * 127px;
+  margin-left: $scale * 4px;
+  margin-right: $scale * 4px;
+}
+
+div.leftPanelArea > div.leftPanelTop {
+  position: absolute;
+  border-top: $scale * 2px solid #868a8e;
+  border-bottom: $scale * 2px solid #ffffff;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+div.leftPanelArea > div.leftPanelBottom {
+  position: absolute;
+  border-top: $scale * 2px solid #868a8e;
+  border-bottom: $scale * 2px solid #ffffff;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+div.drawAreaContainer {
+  position: absolute;
+  top: $scale * 74px;
+  bottom: $scale * 127px;
+  left: $scale * 104px;
+  right: $scale * 5px;
+  border-top: $scale * 2px solid #868a8e;
+  border-left: $scale * 2px solid #868a8e;
+  border-bottom: $scale * 2px solid #ffffff;
+  border-right: $scale * 2px solid #ffffff;
+}
+
+div.drawAreaContainer > div {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-top: $scale * 2px solid #000000;
+  border-left: $scale * 2px solid #000000;
+  border-bottom: $scale * 2px solid #c3c7cb;
+  border-right: $scale * 2px solid #c3c7cb;
+  background-color: #868a8e;
 }

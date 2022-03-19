@@ -6,8 +6,11 @@ import * as m from '../model';
 import * as c from '../controller';
 import { Ctx, go } from '.';
 
-export function ShortcutText({ text }: m.ShortcutText): JSX.Element {
-  return <>{ text }</>;
+export function ShortcutText({ text, shortcutPosition }: m.ShortcutText): JSX.Element {
+  const before = text.slice(0, shortcutPosition);
+  const toUnderline = text.slice(shortcutPosition, shortcutPosition + 1);
+  const after = text.slice(shortcutPosition + 1);
+  return <><span>{ before }</span><span className='underline'>{ toUnderline }</span><span>{ after }</span></>;
 }
 
 export function MenuItem(ctx: Ctx<m.MenuItem>): JSX.Element {
@@ -34,7 +37,7 @@ export function MenuItem(ctx: Ctx<m.MenuItem>): JSX.Element {
 }
 
 export function Menu(ctx: Ctx<m.Menu>): JSX.Element {
-  return <ul className='menu'>
+  return <div className='menuContainer'><ul className='menu'>
     {
       ctx.model.items.map((item, i) => {
         if (item === 'Separator') {
@@ -49,7 +52,7 @@ export function Menu(ctx: Ctx<m.Menu>): JSX.Element {
         return <li key={ i }>{ MenuItem(menuItemCtx) }</li>;
       }).toArray()
     }
-  </ul>;
+  </ul></div>;
 }
 
 export function Button({ text, onClick }: m.Button & { onClick: () => void}, selected: boolean): JSX.Element {

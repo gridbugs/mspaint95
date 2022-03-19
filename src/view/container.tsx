@@ -27,15 +27,25 @@ export function Container(buttonMenuStripCtx: Ctx<m.ButtonMenuStrip>): JSX.Eleme
   }, []);
 
   return <div className='container'>
-    <div>
-    <div className='title'>
-    MSPaint95
-    </div>
-    <div ref={dropdownAreaRef}>
-    {
-      v.ButtonMenuStrip(buttonMenuStripCtx)
-    }
-    </div>
-    </div>
+      <div>
+        <div className='title'>
+          MSPaint95
+        </div>
+        <div ref={dropdownAreaRef}>
+        {
+          v.ButtonMenuStrip(buttonMenuStripCtx)
+        }
+        </div>
+        <div className='leftPanelArea'>
+          <div className='leftPanelTop'>
+          </div>
+          <div className='leftPanelBottom'>
+          </div>
+        </div>
+        <div className='drawAreaContainer'>
+          <div>
+          </div>
+        </div>
+      </div>
     </div>;
 }
