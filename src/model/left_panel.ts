@@ -1,7 +1,23 @@
 import { List } from 'immutable';
 import { Option, some, none } from 'fp-ts/Option';
 
-export type Tool = 'Pencil' | 'Fill';
+export type Tool =
+  | 'Airbrush'
+  | 'Brush'
+  | 'ColorPicker'
+  | 'Curve'
+  | 'Ellipse'
+  | 'Eraser'
+  | 'FillWithColor'
+  | 'FreeFormSelect'
+  | 'Line'
+  | 'Magnifier'
+  | 'Pencil'
+  | 'Polygon'
+  | 'Rectangle'
+  | 'RoundedRectangle'
+  | 'Select'
+  | 'Text';
 
 export interface LeftPanelButton {
   imageClass: string,

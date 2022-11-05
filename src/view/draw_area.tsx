@@ -79,7 +79,7 @@ class DrawState {
   }
 
   mouseDown(): void {
-    if (isSome(this.tool) && this.tool.value === 'Fill') {
+    if (isSome(this.tool) && this.tool.value === 'FillWithColor') {
       this.fill();
     } else {
       this.drawing = true;

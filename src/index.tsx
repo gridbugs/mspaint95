@@ -134,8 +134,22 @@ const BUTTON_MENU_STRIP: model.ButtonMenuStrip = {
 
 const LEFT_PANEL: model.LeftPanel = {
   buttons: List([
-    { imageClass: 'pencil', state: 'Deselected', tool: 'Pencil' },
-    { imageClass: 'fill', state: 'Deselected', tool: 'Fill' },
+    { imageClass: 'icon_Free-Form_Select', state: 'Deselected', tool: 'FreeFormSelect' },
+    { imageClass: 'icon_Select', state: 'Deselected', tool: 'Select' },
+    { imageClass: 'icon_Eraser', state: 'Deselected', tool: 'Eraser' },
+    { imageClass: 'icon_Fill_With_Color', state: 'Deselected', tool: 'FillWithColor' },
+    { imageClass: 'icon_Color_Picker', state: 'Deselected', tool: 'ColorPicker' },
+    { imageClass: 'icon_Magnifier', state: 'Deselected', tool: 'Magnifier' },
+    { imageClass: 'icon_Pencil', state: 'Deselected', tool: 'Pencil' },
+    { imageClass: 'icon_Brush', state: 'Deselected', tool: 'Brush' },
+    { imageClass: 'icon_Airbrush', state: 'Deselected', tool: 'Airbrush' },
+    { imageClass: 'icon_Text', state: 'Deselected', tool: 'Text' },
+    { imageClass: 'icon_Line', state: 'Deselected', tool: 'Line' },
+    { imageClass: 'icon_Curve', state: 'Deselected', tool: 'Curve' },
+    { imageClass: 'icon_Rectangle', state: 'Deselected', tool: 'Rectangle' },
+    { imageClass: 'icon_Polygon', state: 'Deselected', tool: 'Polygon' },
+    { imageClass: 'icon_Ellipse', state: 'Deselected', tool: 'Ellipse' },
+    { imageClass: 'icon_Rounded_Rectangle', state: 'Deselected', tool: 'RoundedRectangle' },
   ]),
 };
 
