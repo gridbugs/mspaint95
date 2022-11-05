@@ -21,7 +21,7 @@
       {
         devShell = mkShell rec {
           buildInputs = [
-            nodejs-17_x
+            nodejs
             nodePackages.typescript-language-server
           ];
         };

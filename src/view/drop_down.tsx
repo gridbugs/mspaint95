@@ -41,7 +41,7 @@ export function Menu(ctx: Ctx<m.Menu>): JSX.Element {
     {
       ctx.model.items.map((item, i) => {
         if (item === 'Separator') {
-          return <div className='separator'></div>;
+          return <div key={ i } className='separator'></div>;
         }
         const menuItemCtx = {
           model: item,
