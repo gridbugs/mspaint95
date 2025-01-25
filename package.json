@@ -7,7 +7,8 @@
     "serve": "webpack serve --mode development",
     "serve-production": "webpack serve --mode production",
     "build": "webpack --mode development",
-    "build-production": "webpack --mode production"
+    "build-production": "webpack --mode production",
+    "test": "xo"
   },
   "repository": {
     "type": "git",
@@ -20,26 +21,14 @@
   },
   "homepage": "https://github.com/gridbugs/mspaint95#readme",
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.3.0",
-    "@typescript-eslint/parser": "^5.3.0",
-    "css-loader": "^6.5.1",
-    "dart-sass": "^1.25.0",
-    "eslint": "^7.32.0",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.25.2",
-    "eslint-plugin-react": "^7.26.1",
-    "eslint-webpack-plugin": "^3.1.0",
-    "fp-ts": "^2.11.5",
-    "html-webpack-plugin": "^5.5.0",
-    "immutable": "^4.0.0",
-    "preact": "^10.5.15",
-    "sass": "^1.43.4",
-    "sass-loader": "^12.3.0",
-    "style-loader": "^3.3.1",
-    "ts-loader": "^9.2.6",
-    "typescript": "^4.4.4",
-    "webpack": "^5.62.1",
-    "webpack-cli": "^4.9.1",
-    "webpack-dev-server": "^4.4.0"
+    "copy-webpack-plugin": "^12.0.2",
+    "html-webpack-plugin": "^5.6.3",
+    "ts-loader": "^9.5.2",
+    "webpack": "^5.97.1"
+  },
+  "devDependencies": {
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.0",
+    "xo": "^0.60.0"
   }
 }
