@@ -1,15 +1,24 @@
 <!doctype html>
 <html>
 	<head>
-<style>
+		<meta name="color-scheme" content="light only">
+		<link rel="icon" type="image/x-icon" href="/assets/images/icon16x16.png">
+		<style>
 :root {
-	--main-bg-color: blue;
-  color-scheme: only light;
+	/* Prevent dark mode from being applied in some browsers. */
+	color-scheme: only light;
 }
-
-body {
-	background-color: var(--main-bg-color);
-}
-</style>
+		</style>
 	</head>
+	<body>
+		<div class="container">
+			<div>
+				<div class="title"><div class="file-icon"></div><span class="title-text">untitled - Paint</span></div>
+				<div class="buttonMenuStrip"></div>
+				<div class="leftPanelArea"></div>
+				<div class="drawAreaContainer"></div>
+				<div class="colorPickerContainer"></div>
+			</div>
+		</div>
+	</body>
 </html>

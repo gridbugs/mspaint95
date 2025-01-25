@@ -1,0 +1,459 @@
+$scale: 1;
+
+@font-face {
+  font-family: W95;
+  src: url(./assets/font/W95font.otf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: W95;
+  src: url(./assets/font/W95font-Bold.otf);
+  font-weight: bold;
+}
+
+* {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-family: W95;
+  font-size: $scale * 16px;
+  padding: 0;
+  margin: 0;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+}
+
+div.container {
+  background-color: #c3c7cb;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+div.container > div {
+  border-top: $scale * 2px solid #ffffff;
+  border-left: $scale * 2px solid #ffffff;
+  border-bottom: $scale * 2px solid #868a8e;
+  border-right: $scale * 2px solid #868a8e;
+  position: absolute;
+  top: $scale * 2px;
+  bottom: $scale * 2px;
+  left: $scale * 2px;
+  right: $scale * 2px;
+}
+
+div.title {
+  background-color: #0000aa;
+  color: #ffffff;
+  font-weight: bold;
+  position: absolute;
+  height: $scale * 18px;
+  top: $scale * 4px;
+  left: $scale * 4px;
+  right: $scale * 4px;
+}
+
+div.title > div.file-icon {
+  position: absolute;
+  background-color: red;
+  top: $scale * 1px;
+  bottom: $scale * 1px;
+  left: $scale * 2px;
+  height: $scale * 16px;
+  width: $scale * 16px;
+  background: url(./assets/images/file-icon16x16.png);
+  background-size: cover;
+}
+
+div.title > span.title-text {
+  position: absolute;
+  left: $scale * 22px;
+  top: $scale * 3px;
+  font-size: $scale * 12px;
+}
+
+div.buttonMenuStrip {
+  display: inline-block;
+  position: absolute;
+  top: $scale * 42px;
+  height: $scale * 31px;
+  left: $scale * 4px;
+  right: $scale * 4px;
+
+}
+
+div.menuItemSelected {
+  background-color: #0000aa;
+  color: #ffffff;
+}
+
+div.buttonMenuStrip > div {
+  display: inline-block;
+  position: relative;
+}
+
+div.buttonMenu {
+  display: inline-block;
+}
+
+div.button {
+  display: inline-block;
+  padding-left: $scale * 10px;
+  padding-right: $scale * 10px;
+  padding-top: $scale * 4px;
+  padding-bottom: $scale * 4px;
+}
+div.button:hover {
+  background-color: #0000aa;
+  color: #ffffff;
+}
+
+div.menuContainer {
+  position: absolute;
+  border-top: $scale * 2px solid #c3c7cb;
+  border-left: $scale * 2px solid #c3c7cb;
+  border-bottom: $scale * 2px solid #000000;
+  border-right: $scale * 2px solid #000000;
+  margin: 0 auto;
+  text-align: left;
+  width: auto;
+  white-space: nowrap;
+  z-index: 2;
+  background-color: #c3c7cb;
+}
+
+ul.menu {
+  border-top: $scale * 2px solid #ffffff;
+  border-left: $scale * 2px solid #ffffff;
+  border-bottom: $scale * 2px solid #868a8e;
+  border-right: $scale * 2px solid #868a8e;
+  padding: 5px 0px;
+}
+
+ul.menu > li {
+  list-style-type: none;
+}
+
+div.separator {
+  position: relative;
+  width: 100%;
+  border-top: $scale * 2px solid #868a8e;
+  border-bottom: $scale * 2px solid #ffffff;
+  margin-top: $scale * 10px;
+  margin-bottom: $scale * 10px;
+}
+
+div.menuItem {
+  display: flex;
+  padding-top: $scale * 2px;
+  padding-bottom: $scale * 2px;
+}
+
+div.leftContainer {
+  display: inline-block;
+}
+
+div.menuItem div.tickContainer {
+  display: inline-block;
+  width: $scale * 30px;
+  text-align: center;
+}
+
+div.menuItem div.nameContainer {
+  display: inline-block;
+}
+
+div.menuItem div.shortcutContainer {
+  display: inline-block;
+  text-align: right;
+  padding-right: 30px;
+  padding-left: 30px;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+div.leftPanelArea {
+  position: absolute;
+  left: 0;
+  width: $scale * 96px;
+  top: $scale * 78px;
+  bottom: $scale * 127px;
+  margin-left: $scale * 4px;
+  margin-right: $scale * 4px;
+}
+
+div.leftPanelArea > div.leftPanelTop {
+  position: absolute;
+  border-top: $scale * 2px solid #868a8e;
+  border-bottom: $scale * 2px solid #ffffff;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+div.leftPanelArea > div.leftPanelBottom {
+  position: absolute;
+  border-top: $scale * 2px solid #868a8e;
+  border-bottom: $scale * 2px solid #ffffff;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+div.drawAreaContainer {
+  position: absolute;
+  top: $scale * 78px;
+  bottom: $scale * 127px;
+  left: $scale * 104px;
+  right: $scale * 5px;
+  border-top: $scale * 2px solid #868a8e;
+  border-left: $scale * 2px solid #868a8e;
+  border-bottom: $scale * 2px solid #ffffff;
+  border-right: $scale * 2px solid #ffffff;
+}
+
+div.drawAreaContainer > div {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-top: $scale * 2px solid #000000;
+  border-left: $scale * 2px solid #000000;
+  border-bottom: $scale * 2px solid #c3c7cb;
+  border-right: $scale * 2px solid #c3c7cb;
+  background-color: #868a8e;
+  padding: $scale * 2px;
+}
+
+canvas.drawCanvas {}
+
+div.colorSwatches {
+  display: inline-block;
+}
+
+div.colorPickerContainer {
+  position: absolute;
+  bottom: $scale * 60px;
+  height: $scale * 60px;
+  left: $scale * 5px;
+}
+
+div.colorCellContainer {
+  display: inline-block;
+  position: relative;
+  width: $scale * 30px;
+  height: $scale * 30px;
+  border-top: $scale * 2px solid #868a8e;
+  border-left: $scale * 2px solid #868a8e;
+  border-bottom: $scale * 2px solid #ffffff;
+  border-right: $scale * 2px solid #ffffff;
+}
+
+div.colorCell {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-top: $scale * 2px solid #000000;
+  border-left: $scale * 2px solid #000000;
+  border-bottom: $scale * 2px solid #c3c7cb;
+  border-right: $scale * 2px solid #c3c7cb;
+}
+
+div.currentColorsContainer {
+  position: relative;
+  display: inline-block;
+  height: $scale * 64px;
+  width: $scale * 64px;
+  border-top: $scale * 2px solid #868a8e;
+  border-left: $scale * 2px solid #868a8e;
+  border-bottom: $scale * 2px solid #ffffff;
+  border-right: $scale * 2px solid #ffffff;
+}
+
+div.currentColors {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-top: $scale * 2px solid #000000;
+  border-left: $scale * 2px solid #000000;
+  border-bottom: $scale * 2px solid #c3c7cb;
+  border-right: $scale * 2px solid #c3c7cb;
+  /* Checkered image tiled to make checkered background */
+  background: url(./assets/images/transparent_4x4.png) repeat;
+}
+
+
+div.currentCellContainer {
+  display: inline-block;
+  position: relative;
+  width: $scale * 30px;
+  height: $scale * 30px;
+  border-top: $scale * 2px solid #ffffff;
+  border-left: $scale * 2px solid #ffffff;
+  border-bottom: $scale * 2px solid #868a8e;
+  border-right: $scale * 2px solid #868a8e;
+}
+
+div.currentCell {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border: $scale * 2px solid #c3c7cb;
+}
+
+div.currentColors > div.fg {
+  position: absolute;
+  top: $scale * 5px;
+  left: $scale * 5px;
+  z-index: 1;
+}
+
+div.currentColors > div.bg {
+  position: absolute;
+  bottom: $scale * 5px;
+  right: $scale * 5px;
+}
+
+div.leftPanel {
+  padding-top: $scale * 2px;
+  padding-left: $scale * 8px;
+}
+
+div.leftPanelButtonContainer {
+  display: inline-block;
+  position: relative;
+  width: $scale * 38px;
+  height: $scale * 38px;
+  border-top: $scale * 2px solid #ffffff;
+  border-left: $scale * 2px solid #ffffff;
+  border-bottom: $scale * 2px solid #000000;
+  border-right: $scale * 2px solid #000000;
+}
+
+div.leftPanelButtonContainerPressing {
+  border-top: $scale * 2px solid #000000;
+  border-left: $scale * 2px solid #000000;
+  border-bottom: $scale * 2px solid #ffffff;
+  border-right: $scale * 2px solid #ffffff;
+}
+
+div.leftPanelButtonContainerSelected {
+  border-top: $scale * 2px solid #000000;
+  border-left: $scale * 2px solid #000000;
+  border-bottom: $scale * 2px solid #ffffff;
+  border-right: $scale * 2px solid #ffffff;
+  background: url(./assets/images/transparent_4x4.png) repeat;
+  background-position: top $scale * -0.2px left $scale * 1.9px;
+}
+
+div.leftPanelButton {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-top: $scale * 2px solid #c3c7cb;
+  border-left: $scale * 2px solid #c3c7cb;
+  border-bottom: $scale * 2px solid #868a8e;
+  border-right: $scale * 2px solid #868a8e;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+div.leftPanelButtonPressing {
+  border-top: $scale * 2px solid #868a8e;
+  border-left: $scale * 2px solid #868a8e;
+  border-bottom: $scale * 2px solid #c3c7cb;
+  border-right: $scale * 2px solid #c3c7cb;
+  background-position: top $scale * 2px left $scale * 2px;
+}
+
+div.leftPanelButtonSelected {
+  border-top: $scale * 2px solid #868a8e;
+  border-left: $scale * 2px solid #868a8e;
+  border-bottom: $scale * 2px solid #c3c7cb;
+  border-right: $scale * 2px solid #c3c7cb;
+}
+
+.icon_Airbrush {
+  background-image: url(./assets/images/icon/Airbrush.png);
+}
+
+.icon_Brush {
+  background-image: url(./assets/images/icon/Brush.png);
+}
+
+.icon_Curve {
+  background-image: url(./assets/images/icon/Curve.png);
+}
+
+.icon_Ellipse {
+  background-image: url(./assets/images/icon/Ellipse.png);
+}
+
+.icon_Eraser {
+  background-image: url(./assets/images/icon/Eraser.png);
+}
+
+.icon_Color_Picker {
+  background-image: url(./assets/images/icon/Color_Picker.png);
+}
+
+.icon_Fill_With_Color {
+  background-image: url(./assets/images/icon/Fill_With_Color.png);
+}
+
+.icon_Free-Form_Select {
+  background-image: url(./assets/images/icon/Free-Form_Select.png);
+}
+
+.icon_Line {
+  background-image: url(./assets/images/icon/Line.png);
+}
+
+.icon_Magnifier {
+  background-image: url(./assets/images/icon/Magnifier.png);
+}
+
+.icon_Pencil {
+  background-image: url(./assets/images/icon/Pencil.png);
+}
+
+.icon_Polygon {
+  background-image: url(./assets/images/icon/Polygon.png);
+}
+
+.icon_Rectangle {
+  background-image: url(./assets/images/icon/Rectangle.png);
+}
+
+.icon_Rounded_Rectangle {
+  background-image: url(./assets/images/icon/Rounded_Rectangle.png);
+}
+
+.icon_Select {
+  background-image: url(./assets/images/icon/Select.png);
+}
+
+.icon_Text {
+  background-image: url(./assets/images/icon/Text.png);
+}
