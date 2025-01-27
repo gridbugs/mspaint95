@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
 	<head>
+		<title>MSPaint95</title>
 		<meta name="color-scheme" content="light only">
 		<link rel="icon" type="image/x-icon" href="/assets/images/icon16x16.png">
 		<style>
@@ -14,10 +15,93 @@
 		<div class="container">
 			<div>
 				<div class="title"><div class="file-icon"></div><span class="title-text">untitled - Paint</span></div>
-				<div class="buttonMenuStrip"></div>
-				<div class="leftPanelArea"></div>
-				<div class="drawAreaContainer"></div>
-				<div class="colorPickerContainer"></div>
+				<div class="buttonMenuStrip">
+					<div class="buttonMenu">
+						<div class="button">
+							<span class="underline">F</span><span>ile</span>
+						</div>
+					</div>
+					<div class="buttonMenu">
+						<div class="button">
+							<span class="underline">E</span><span>dit</span>
+						</div>
+					</div>
+					<div class="buttonMenu">
+						<div class="button">
+							<span class="underline">V</span><span>iew</span>
+						</div>
+					</div>
+					<div class="buttonMenu">
+						<div class="button">
+							<span class="underline">I</span><span>mage</span>
+						</div>
+					</div>
+					<div class="buttonMenu">
+						<div class="button">
+							<span class="underline">O</span><span>ption</span>
+						</div>
+					</div>
+					<div class="buttonMenu">
+						<div class="button">
+							<span class="underline">H</span><span>elp</span>
+						</div>
+					</div>
+				</div>
+				<div class="leftPanelArea">
+					<div class="leftPanelTop"></div>
+					<div class="leftPanelBottom"></div>
+				</div>
+				<div class="drawAreaContainer">
+					<div>
+						<canvas class="drawCanvas" width="640" height="480"></canvas>
+					</div>
+				</div>
+				<div class="colorPickerContainer">
+					<div class="currentColorsContainer">
+						<div class="currentColors">
+							<div class="fg">
+								<div class="currentCellContainer">
+									<div class="currentCell" style="background-color: rgb(0, 255, 255)"></div>
+								</div>
+							</div>
+							<div class="bg">
+								<div class="currentCellContainer">
+									<div class="currentCell" style="background-color: rgb(255, 255, 0)"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="colorSwatches">
+						<div class="colorSwatchesTopRow">
+							<div class="colorCellContainer">
+								<div class="colorCell" style="background-color: rgb(0, 0, 0)"></div>
+							</div>
+							<div class="colorCellContainer">
+								<div class="colorCell" style="background-color: rgb(255, 255, 255)"></div>
+							</div>
+							<div class="colorCellContainer">
+								<div class="colorCell" style="background-color: rgb(255, 0, 0)"></div>
+							</div>
+							<div class="colorCellContainer">
+								<div class="colorCell" style="background-color: rgb(0, 255, 0)"></div>
+							</div>
+						</div>
+						<div class="colorSwatchesBottomRow">
+							<div class="colorCellContainer">
+								<div class="colorCell" style="background-color: rgb(0, 0, 255)"></div>
+							</div>
+							<div class="colorCellContainer">
+								<div class="colorCell" style="background-color: rgb(0, 255, 255)"></div>
+							</div>
+							<div class="colorCellContainer">
+								<div class="colorCell" style="background-color: rgb(255, 255, 0)"></div>
+							</div>
+							<div class="colorCellContainer">
+								<div class="colorCell" style="background-color: rgb(255, 0, 255)"></div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</body>

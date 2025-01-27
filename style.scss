@@ -1,4 +1,8 @@
 $scale: 1;
+$borderGrey: #868a8e;
+$borderLightGrey: #c3c7cb;
+$borderWhite: #ffffff;
+$borderBlack: #000000;
 
 @font-face {
   font-family: W95;
@@ -37,15 +41,15 @@ div.container {
 }
 
 div.container > div {
-  border-top: $scale * 2px solid #ffffff;
-  border-left: $scale * 2px solid #ffffff;
-  border-bottom: $scale * 2px solid #868a8e;
-  border-right: $scale * 2px solid #868a8e;
+  border-top: $scale * 1px solid $borderWhite;
+  border-left: $scale * 1px solid $borderWhite;
+  border-bottom: $scale * 1px solid $borderGrey;
+  border-right: $scale * 1px solid $borderGrey;
   position: absolute;
-  top: $scale * 2px;
-  bottom: $scale * 2px;
-  left: $scale * 2px;
-  right: $scale * 2px;
+  top: $scale * 1px;
+  bottom: $scale * 1px;
+  left: $scale * 1px;
+  right: $scale * 1px;
 }
 
 div.title {
@@ -54,9 +58,9 @@ div.title {
   font-weight: bold;
   position: absolute;
   height: $scale * 18px;
-  top: $scale * 4px;
-  left: $scale * 4px;
-  right: $scale * 4px;
+  top: $scale * 2px;
+  left: $scale * 2px;
+  right: $scale * 2px;
 }
 
 div.title > div.file-icon {
@@ -79,12 +83,11 @@ div.title > span.title-text {
 }
 
 div.buttonMenuStrip {
-  display: inline-block;
   position: absolute;
-  top: $scale * 42px;
-  height: $scale * 31px;
-  left: $scale * 4px;
-  right: $scale * 4px;
+  top: $scale * 20px;
+  height: $scale * 20px;
+  left: $scale * 2px;
+  right: $scale * 2px;
 
 }
 
@@ -93,19 +96,16 @@ div.menuItemSelected {
   color: #ffffff;
 }
 
-div.buttonMenuStrip > div {
-  display: inline-block;
-  position: relative;
-}
-
 div.buttonMenu {
   display: inline-block;
 }
 
 div.button {
   display: inline-block;
-  padding-left: $scale * 10px;
-  padding-right: $scale * 10px;
+  margin-top: $scale * 1px;
+  margin-bottom: $scale * 1px;
+  padding-left: $scale * 4px;
+  padding-right: $scale * 4px;
   padding-top: $scale * 4px;
   padding-bottom: $scale * 4px;
 }
@@ -116,10 +116,10 @@ div.button:hover {
 
 div.menuContainer {
   position: absolute;
-  border-top: $scale * 2px solid #c3c7cb;
-  border-left: $scale * 2px solid #c3c7cb;
-  border-bottom: $scale * 2px solid #000000;
-  border-right: $scale * 2px solid #000000;
+  border-top: $scale * 1px solid #c3c7cb;
+  border-left: $scale * 1px solid #c3c7cb;
+  border-bottom: $scale * 1px solid #000000;
+  border-right: $scale * 1px solid #000000;
   margin: 0 auto;
   text-align: left;
   width: auto;
@@ -129,10 +129,10 @@ div.menuContainer {
 }
 
 ul.menu {
-  border-top: $scale * 2px solid #ffffff;
-  border-left: $scale * 2px solid #ffffff;
-  border-bottom: $scale * 2px solid #868a8e;
-  border-right: $scale * 2px solid #868a8e;
+  border-top: $scale * 1px solid $borderWhite;
+  border-left: $scale * 1px solid $borderWhite;
+  border-bottom: $scale * 1px solid $borderGrey;
+  border-right: $scale * 1px solid $borderGrey;
   padding: 5px 0px;
 }
 
@@ -143,8 +143,8 @@ ul.menu > li {
 div.separator {
   position: relative;
   width: 100%;
-  border-top: $scale * 2px solid #868a8e;
-  border-bottom: $scale * 2px solid #ffffff;
+  border-top: $scale * 1px solid $borderGrey;
+  border-bottom: $scale * 1px solid $borderWhite;
   margin-top: $scale * 10px;
   margin-bottom: $scale * 10px;
 }
@@ -180,22 +180,23 @@ div.menuItem div.shortcutContainer {
 
 .underline {
   text-decoration: underline;
+  text-decoration-thickness: $scale * 1px;
 }
 
 div.leftPanelArea {
   position: absolute;
   left: 0;
-  width: $scale * 96px;
-  top: $scale * 78px;
+  width: $scale * 56px;
+  top: $scale * 49px;
   bottom: $scale * 127px;
-  margin-left: $scale * 4px;
-  margin-right: $scale * 4px;
+  margin-left: $scale * 2px;
+  margin-right: $scale * 2px;
 }
 
 div.leftPanelArea > div.leftPanelTop {
   position: absolute;
-  border-top: $scale * 2px solid #868a8e;
-  border-bottom: $scale * 2px solid #ffffff;
+  border-top: $scale * 1px solid $borderGrey;
+  border-bottom: $scale * 1px solid $borderWhite;
   top: 0;
   left: 0;
   right: 0;
@@ -204,8 +205,8 @@ div.leftPanelArea > div.leftPanelTop {
 
 div.leftPanelArea > div.leftPanelBottom {
   position: absolute;
-  border-top: $scale * 2px solid #868a8e;
-  border-bottom: $scale * 2px solid #ffffff;
+  border-top: $scale * 1px solid $borderGrey;
+  border-bottom: $scale * 1px solid $borderWhite;
   bottom: 0;
   left: 0;
   right: 0;
@@ -214,14 +215,14 @@ div.leftPanelArea > div.leftPanelBottom {
 
 div.drawAreaContainer {
   position: absolute;
-  top: $scale * 78px;
+  top: $scale * 49px;
   bottom: $scale * 127px;
-  left: $scale * 104px;
+  left: $scale * 59px;
   right: $scale * 5px;
-  border-top: $scale * 2px solid #868a8e;
-  border-left: $scale * 2px solid #868a8e;
-  border-bottom: $scale * 2px solid #ffffff;
-  border-right: $scale * 2px solid #ffffff;
+  border-top: $scale * 1px solid $borderGrey;
+  border-left: $scale * 1px solid $borderGrey;
+  border-bottom: $scale * 1px solid $borderWhite;
+  border-right: $scale * 1px solid $borderWhite;
 }
 
 div.drawAreaContainer > div {
@@ -230,36 +231,54 @@ div.drawAreaContainer > div {
   bottom: 0;
   left: 0;
   right: 0;
-  border-top: $scale * 2px solid #000000;
-  border-left: $scale * 2px solid #000000;
-  border-bottom: $scale * 2px solid #c3c7cb;
-  border-right: $scale * 2px solid #c3c7cb;
-  background-color: #868a8e;
+  border-top: $scale * 1px solid $borderBlack;
+  border-left: $scale * 1px solid $borderBlack;
+  border-bottom: $scale * 1px solid $borderLightGrey;
+  border-right: $scale * 1px solid $borderLightGrey;
+  background-color: $borderGrey;
   padding: $scale * 2px;
 }
 
 canvas.drawCanvas {}
 
 div.colorSwatches {
-  display: inline-block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 33px;
+  right: 0;
+}
+
+div.colorSwatches > div.colorSwatchesTopRow {
+  position: absolute;
+  top: 0;
+  border-right: $scale * 1px solid $borderGrey;
+}
+
+div.colorSwatches > div.colorSwatchesBottomRow {
+  position: absolute;
+  bottom: -2px;
+  border-right: $scale * 1px solid $borderGrey;
+  border-bottom: $scale * 1px solid $borderGrey;
 }
 
 div.colorPickerContainer {
   position: absolute;
-  bottom: $scale * 60px;
-  height: $scale * 60px;
-  left: $scale * 5px;
+  bottom: $scale * 89px;
+  height: $scale * 33px;
+  left: $scale * 2px;
+  right: $scale * 2px;
 }
 
 div.colorCellContainer {
-  display: inline-block;
+  float: left;
   position: relative;
-  width: $scale * 30px;
-  height: $scale * 30px;
-  border-top: $scale * 2px solid #868a8e;
-  border-left: $scale * 2px solid #868a8e;
-  border-bottom: $scale * 2px solid #ffffff;
-  border-right: $scale * 2px solid #ffffff;
+  width: $scale * 15px;
+  height: $scale * 15px;
+  border-top: $scale * 1px solid $borderGrey;
+  border-left: $scale * 1px solid $borderGrey;
+  border-bottom: $scale * 1px solid $borderWhite;
+  border-right: $scale * 1px solid $borderWhite;
 }
 
 div.colorCell {
@@ -268,21 +287,21 @@ div.colorCell {
   bottom: 0;
   left: 0;
   right: 0;
-  border-top: $scale * 2px solid #000000;
-  border-left: $scale * 2px solid #000000;
-  border-bottom: $scale * 2px solid #c3c7cb;
-  border-right: $scale * 2px solid #c3c7cb;
+  border-top: $scale * 1px solid $borderBlack;
+  border-left: $scale * 1px solid $borderBlack;
+  border-bottom: $scale * 1px solid $borderLightGrey;
+  border-right: $scale * 1px solid $borderLightGrey;
 }
 
 div.currentColorsContainer {
+  float: left;
   position: relative;
-  display: inline-block;
-  height: $scale * 64px;
-  width: $scale * 64px;
-  border-top: $scale * 2px solid #868a8e;
-  border-left: $scale * 2px solid #868a8e;
-  border-bottom: $scale * 2px solid #ffffff;
-  border-right: $scale * 2px solid #ffffff;
+  height: $scale * 32px;
+  width: $scale * 31px;
+  border-top: $scale * 1px solid $borderGrey;
+  border-left: $scale * 1px solid $borderGrey;
+  border-bottom: $scale * 1px solid $borderWhite;
+  border-right: $scale * 1px solid $borderWhite;
 }
 
 div.currentColors {
@@ -291,24 +310,24 @@ div.currentColors {
   bottom: 0;
   left: 0;
   right: 0;
-  border-top: $scale * 2px solid #000000;
-  border-left: $scale * 2px solid #000000;
-  border-bottom: $scale * 2px solid #c3c7cb;
-  border-right: $scale * 2px solid #c3c7cb;
+  border-top: $scale * 1px solid $borderBlack;
+  border-left: $scale * 1px solid $borderBlack;
+  border-bottom: $scale * 1px solid $borderLightGrey;
+  border-right: $scale * 1px solid $borderLightGrey;
   /* Checkered image tiled to make checkered background */
-  background: url(./assets/images/transparent_4x4.png) repeat;
+  background: url(./assets/images/transparent_2x2.png) repeat;
 }
 
 
 div.currentCellContainer {
   display: inline-block;
   position: relative;
-  width: $scale * 30px;
-  height: $scale * 30px;
-  border-top: $scale * 2px solid #ffffff;
-  border-left: $scale * 2px solid #ffffff;
-  border-bottom: $scale * 2px solid #868a8e;
-  border-right: $scale * 2px solid #868a8e;
+  width: $scale * 15px;
+  height: $scale * 15px;
+  border-top: $scale * 1px solid $borderWhite;
+  border-left: $scale * 1px solid $borderWhite;
+  border-bottom: $scale * 1px solid $borderGrey;
+  border-right: $scale * 1px solid $borderGrey;
 }
 
 div.currentCell {
@@ -317,25 +336,20 @@ div.currentCell {
   bottom: 0;
   left: 0;
   right: 0;
-  border: $scale * 2px solid #c3c7cb;
+  border: $scale * 1px solid $borderLightGrey;
 }
 
 div.currentColors > div.fg {
   position: absolute;
-  top: $scale * 5px;
-  left: $scale * 5px;
+  left: $scale * 2px;
+  top: $scale * 3px;
   z-index: 1;
 }
 
 div.currentColors > div.bg {
   position: absolute;
-  bottom: $scale * 5px;
-  right: $scale * 5px;
-}
-
-div.leftPanel {
-  padding-top: $scale * 2px;
-  padding-left: $scale * 8px;
+  left: $scale * 9px;
+  top: $scale * 10px;
 }
 
 div.leftPanelButtonContainer {
@@ -343,25 +357,25 @@ div.leftPanelButtonContainer {
   position: relative;
   width: $scale * 38px;
   height: $scale * 38px;
-  border-top: $scale * 2px solid #ffffff;
-  border-left: $scale * 2px solid #ffffff;
-  border-bottom: $scale * 2px solid #000000;
-  border-right: $scale * 2px solid #000000;
+  border-top: $scale * 1px solid $borderWhite;
+  border-left: $scale * 1px solid $borderWhite;
+  border-bottom: $scale * 1px solid $borderBlack;
+  border-right: $scale * 1px solid $borderBlack;
 }
 
 div.leftPanelButtonContainerPressing {
-  border-top: $scale * 2px solid #000000;
-  border-left: $scale * 2px solid #000000;
-  border-bottom: $scale * 2px solid #ffffff;
-  border-right: $scale * 2px solid #ffffff;
+  border-top: $scale * 1px solid $borderBlack;
+  border-left: $scale * 1px solid $borderBlack;
+  border-bottom: $scale * 1px solid $borderWhite;
+  border-right: $scale * 1px solid $borderWhite;
 }
 
 div.leftPanelButtonContainerSelected {
-  border-top: $scale * 2px solid #000000;
-  border-left: $scale * 2px solid #000000;
-  border-bottom: $scale * 2px solid #ffffff;
-  border-right: $scale * 2px solid #ffffff;
-  background: url(./assets/images/transparent_4x4.png) repeat;
+  border-top: $scale * 1px solid $borderBlack;
+  border-left: $scale * 1px solid $borderBlack;
+  border-bottom: $scale * 1px solid $borderWhite;
+  border-right: $scale * 1px solid $borderWhite;
+  background: url(./assets/images/transparent_2x2.png) repeat;
   background-position: top $scale * -0.2px left $scale * 1.9px;
 }
 
@@ -371,27 +385,27 @@ div.leftPanelButton {
   bottom: 0;
   left: 0;
   right: 0;
-  border-top: $scale * 2px solid #c3c7cb;
-  border-left: $scale * 2px solid #c3c7cb;
-  border-bottom: $scale * 2px solid #868a8e;
-  border-right: $scale * 2px solid #868a8e;
+  border-top: $scale * 2px solid $borderLightGrey;
+  border-left: $scale * 2px solid $borderLightGrey;
+  border-bottom: $scale * 2px solid $borderGrey;
+  border-right: $scale * 2px solid $borderGrey;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 div.leftPanelButtonPressing {
-  border-top: $scale * 2px solid #868a8e;
-  border-left: $scale * 2px solid #868a8e;
-  border-bottom: $scale * 2px solid #c3c7cb;
-  border-right: $scale * 2px solid #c3c7cb;
+  border-top: $scale * 2px solid $borderGrey;
+  border-left: $scale * 2px solid $borderGrey;
+  border-bottom: $scale * 2px solid $borderLightGrey;
+  border-right: $scale * 2px solid $borderLightGrey;
   background-position: top $scale * 2px left $scale * 2px;
 }
 
 div.leftPanelButtonSelected {
-  border-top: $scale * 2px solid #868a8e;
-  border-left: $scale * 2px solid #868a8e;
-  border-bottom: $scale * 2px solid #c3c7cb;
-  border-right: $scale * 2px solid #c3c7cb;
+  border-top: $scale * 2px solid $borderGrey;
+  border-left: $scale * 2px solid $borderGrey;
+  border-bottom: $scale * 2px solid $borderLightGrey;
+  border-right: $scale * 2px solid $borderLightGrey;
 }
 
 .icon_Airbrush {
