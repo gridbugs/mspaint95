@@ -24,7 +24,7 @@ $borderBlack: #000000;
   -ms-user-select: none;
   user-select: none;
   font-family: W95;
-  font-size: $scale * 16px;
+  font-size: $scale * 14px;
   padding: 0;
   margin: 0;
   image-rendering: crisp-edges;
@@ -106,8 +106,8 @@ div.button {
   margin-bottom: $scale * 1px;
   padding-left: $scale * 4px;
   padding-right: $scale * 4px;
-  padding-top: $scale * 4px;
-  padding-bottom: $scale * 4px;
+  padding-top: $scale * 3px;
+  padding-bottom: $scale * 3px;
 }
 div.button:hover {
   background-color: #0000aa;
@@ -187,7 +187,7 @@ div.leftPanelArea {
   position: absolute;
   left: 0;
   width: $scale * 56px;
-  top: $scale * 49px;
+  top: $scale * 45px;
   bottom: $scale * 127px;
   margin-left: $scale * 2px;
   margin-right: $scale * 2px;
@@ -215,7 +215,7 @@ div.leftPanelArea > div.leftPanelBottom {
 
 div.drawAreaContainer {
   position: absolute;
-  top: $scale * 49px;
+  top: $scale * 45px;
   bottom: $scale * 127px;
   left: $scale * 59px;
   right: $scale * 5px;
@@ -352,11 +352,19 @@ div.currentColors > div.bg {
   top: $scale * 10px;
 }
 
+div.leftPanel {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 4px;
+  right: 0;
+}
+
 div.leftPanelButtonContainer {
-  display: inline-block;
   position: relative;
-  width: $scale * 38px;
-  height: $scale * 38px;
+  float: left;
+  width: $scale * 23px;
+  height: $scale * 23px;
   border-top: $scale * 1px solid $borderWhite;
   border-left: $scale * 1px solid $borderWhite;
   border-bottom: $scale * 1px solid $borderBlack;
@@ -375,8 +383,7 @@ div.leftPanelButtonContainerSelected {
   border-left: $scale * 1px solid $borderBlack;
   border-bottom: $scale * 1px solid $borderWhite;
   border-right: $scale * 1px solid $borderWhite;
-  background: url(./assets/images/transparent_2x2.png) repeat;
-  background-position: top $scale * -0.2px left $scale * 1.9px;
+  background: url(./assets/images/transparent_2x2_flipped.png) repeat;
 }
 
 div.leftPanelButton {
@@ -385,27 +392,39 @@ div.leftPanelButton {
   bottom: 0;
   left: 0;
   right: 0;
-  border-top: $scale * 2px solid $borderLightGrey;
-  border-left: $scale * 2px solid $borderLightGrey;
-  border-bottom: $scale * 2px solid $borderGrey;
-  border-right: $scale * 2px solid $borderGrey;
+  border-bottom: $scale * 1px solid $borderGrey;
+  border-right: $scale * 1px solid $borderGrey;
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: top $scale * 0px left $scale * 1px;
 }
 
-div.leftPanelButtonPressing {
-  border-top: $scale * 2px solid $borderGrey;
-  border-left: $scale * 2px solid $borderGrey;
-  border-bottom: $scale * 2px solid $borderLightGrey;
-  border-right: $scale * 2px solid $borderLightGrey;
-  background-position: top $scale * 2px left $scale * 2px;
+div.leftPanelButtonContainerPressing > div.leftPanelButton {
+  border-top: $scale * 1px solid $borderGrey;
+  border-left: $scale * 1px solid $borderGrey;
+  border-bottom: $scale * 1px solid $borderLightGrey;
+  border-right: $scale * 1px solid $borderLightGrey;
+  background-position: top $scale * 1px left $scale * 2px;
 }
 
-div.leftPanelButtonSelected {
-  border-top: $scale * 2px solid $borderGrey;
-  border-left: $scale * 2px solid $borderGrey;
-  border-bottom: $scale * 2px solid $borderLightGrey;
-  border-right: $scale * 2px solid $borderLightGrey;
+div.leftPanelButtonContainerSelected > div.leftPanelButton {
+  border-top: $scale * 1px solid $borderGrey;
+  border-left: $scale * 1px solid $borderGrey;
+  border-bottom: $scale * 1px solid $borderLightGrey;
+  border-right: $scale * 1px solid $borderLightGrey;
+  background-position: top $scale * 1px left $scale * 2px;
+}
+
+div.leftPanelTransparencyContainer {
+  position: absolute;
+  top: 204px;
+  left: 8px;
+  width: 39px;
+  height: 64px;
+  border-left: 1px solid $borderGrey;
+  border-top: 1px solid $borderGrey;
+  border-right: 1px solid $borderWhite;
+  border-bottom: 1px solid $borderWhite;
 }
 
 .icon_Airbrush {

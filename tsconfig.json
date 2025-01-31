@@ -1,6 +1,5 @@
 {
 	"compilerOptions": {
-		"module": "commonjs",
 		"lib": ["dom", "es2022"],
 		"strict": true,
 		"noImplicitAny": true,
