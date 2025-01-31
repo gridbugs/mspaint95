@@ -5,7 +5,7 @@ const CopyWebpackPlgin = require('copy-webpack-plugin');
 module.exports = {
 	mode: 'development',
 	entry: {
-		main: './index.ts',
+		main: './src/index.ts',
 	},
 	devtool: 'inline-source-map',
 	module: {
@@ -18,9 +18,9 @@ module.exports = {
 			{
 				test: /\.scss$/,
 				use: [
-					"style-loader",
-					"css-loader",
-					"sass-loader",
+					'style-loader',
+					'css-loader',
+					'sass-loader',
 				],
 			},
 		],
@@ -40,7 +40,7 @@ module.exports = {
 		new CopyWebpackPlgin({
 			patterns: [
 				{
-					from: './assets',
+					from: './src/assets',
 					to: 'assets',
 				},
 			],
