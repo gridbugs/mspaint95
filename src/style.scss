@@ -3,6 +3,7 @@ $borderGrey: #868a8e;
 $borderLightGrey: #c3c7cb;
 $borderWhite: #ffffff;
 $borderBlack: #000000;
+$titleBlue: #0000aa;
 
 @font-face {
   font-family: W95;
@@ -53,7 +54,7 @@ div.container > div {
 }
 
 div.title {
-  background-color: #0000aa;
+  background-color: $titleBlue;
   color: #ffffff;
   font-weight: bold;
   position: absolute;
@@ -92,7 +93,7 @@ div.buttonMenuStrip {
 }
 
 div.menuItemSelected {
-  background-color: #0000aa;
+  background-color: $titleBlue;
   color: #ffffff;
 }
 
@@ -110,7 +111,7 @@ div.button {
   padding-bottom: $scale * 3px;
 }
 div.button:hover {
-  background-color: #0000aa;
+  background-color: $titleBlue;
   color: #ffffff;
 }
 
@@ -236,10 +237,75 @@ div.drawAreaContainer > div {
   border-bottom: $scale * 1px solid $borderLightGrey;
   border-right: $scale * 1px solid $borderLightGrey;
   background-color: $borderGrey;
-  padding: $scale * 2px;
 }
 
-canvas.drawCanvas {}
+
+div.drawAreaHandleContainer {
+  position: absolute;
+  padding-left: $scale * 3px;
+  padding-top: $scale * 3px;
+  padding-right: $scale * 3px;
+}
+
+div.drawAreaHandle {
+  position: absolute;
+  width: $scale * 3px;
+  height: $scale * 3px;
+  background-color: $titleBlue;
+}
+
+div.drawAreaHandleFixed {
+  position: absolute;
+  width: $scale * 2px;
+  height: $scale * 2px;
+  background-color: #ffffff;
+  border-top: 1px solid $titleBlue;
+  border-left: 1px solid $titleBlue;
+}
+
+div.drawAreaHandleTopLeft {
+  top: 0;
+  left: 0;
+}
+
+div.drawAreaHandleTop {
+  top: 0;
+  left: 50%;
+}
+
+div.drawAreaHandleTopRight {
+  top: 0;
+  right: 0;
+}
+
+div.drawAreaHandleLeft {
+  top: 50%;
+  left: 0;
+}
+
+div.drawAreaHandleBottomLeft {
+  bottom: 1px;
+  left: 0;
+}
+
+div.drawAreaHandleBottom {
+  bottom: 1px;
+  left: 50%;
+}
+
+div.drawAreaHandleBottomRight {
+  bottom: 1px;
+  right: 0;
+}
+
+div.drawAreaHandleRight {
+  top: 50%;
+  right: 0;
+}
+
+canvas.drawCanvas {
+  position: relative;
+}
 
 div.colorSwatches {
   position: absolute;
@@ -428,65 +494,73 @@ div.leftPanelTransparencyContainer {
 }
 
 .icon_Airbrush {
-  background-image: url(./assets/images/icon/Airbrush.png);
+  background-image: url(./assets/images/tools/Airbrush.png);
 }
 
 .icon_Brush {
-  background-image: url(./assets/images/icon/Brush.png);
+  background-image: url(./assets/images/tools/Brush.png);
 }
 
 .icon_Curve {
-  background-image: url(./assets/images/icon/Curve.png);
+  background-image: url(./assets/images/tools/Curve.png);
 }
 
 .icon_Ellipse {
-  background-image: url(./assets/images/icon/Ellipse.png);
+  background-image: url(./assets/images/tools/Ellipse.png);
 }
 
 .icon_Eraser {
-  background-image: url(./assets/images/icon/Eraser.png);
+  background-image: url(./assets/images/tools/Eraser.png);
 }
 
 .icon_Color_Picker {
-  background-image: url(./assets/images/icon/Color_Picker.png);
+  background-image: url(./assets/images/tools/Color_Picker.png);
 }
 
 .icon_Fill_With_Color {
-  background-image: url(./assets/images/icon/Fill_With_Color.png);
+  background-image: url(./assets/images/tools/Fill_With_Color.png);
 }
 
 .icon_Free-Form_Select {
-  background-image: url(./assets/images/icon/Free-Form_Select.png);
+  background-image: url(./assets/images/tools/Free-Form_Select.png);
 }
 
 .icon_Line {
-  background-image: url(./assets/images/icon/Line.png);
+  background-image: url(./assets/images/tools/Line.png);
 }
 
 .icon_Magnifier {
-  background-image: url(./assets/images/icon/Magnifier.png);
+  background-image: url(./assets/images/tools/Magnifier.png);
 }
 
 .icon_Pencil {
-  background-image: url(./assets/images/icon/Pencil.png);
+  background-image: url(./assets/images/tools/Pencil.png);
 }
 
 .icon_Polygon {
-  background-image: url(./assets/images/icon/Polygon.png);
+  background-image: url(./assets/images/tools/Polygon.png);
 }
 
 .icon_Rectangle {
-  background-image: url(./assets/images/icon/Rectangle.png);
+  background-image: url(./assets/images/tools/Rectangle.png);
 }
 
 .icon_Rounded_Rectangle {
-  background-image: url(./assets/images/icon/Rounded_Rectangle.png);
+  background-image: url(./assets/images/tools/Rounded_Rectangle.png);
 }
 
 .icon_Select {
-  background-image: url(./assets/images/icon/Select.png);
+  background-image: url(./assets/images/tools/Select.png);
 }
 
 .icon_Text {
-  background-image: url(./assets/images/icon/Text.png);
+  background-image: url(./assets/images/tools/Text.png);
+}
+
+.cursor_Pencil {
+  cursor: url(./assets/images/cursors/pencil.png) 0 16, auto;
+}
+
+.cursor_Select {
+  cursor: url(./assets/images/cursors/select.png) 10 10, auto;
 }

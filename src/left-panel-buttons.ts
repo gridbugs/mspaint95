@@ -1,5 +1,4 @@
 import * as Tool from './tool';
-import * as State from './state';
 
 const allContainers: HTMLElement[] = Array.from(document.querySelectorAll('.leftPanelButtonContainer'));
 
@@ -40,20 +39,18 @@ function getTool(node: HTMLElement): Tool.T {
 	}
 }
 
-export function init() {
+export function run(select: (tool: Tool.T) => void) {
 	for (const node of allContainers) {
 		const tool = getTool(node);
-		clear(node);
 		node.addEventListener('mousedown', _ => {
 			setPressing(node);
 		});
 		node.addEventListener('mouseup', _ => {
 			setSelected(node);
-			State.globalState.currentTool = tool;
+			select(tool);
 		});
 		node.addEventListener('mouseout', _ => {
 			clearPressing(node);
 		});
 	}
 }
-

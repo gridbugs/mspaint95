@@ -1,10 +1,12 @@
 import './style.scss';
 import * as LeftPanelButtons from './left-panel-buttons';
-import * as State from './state';
+import DrawCanvas from './draw-canvas';
 
 export function main() {
-	LeftPanelButtons.init();
-	console.log(State.globalState);
+	const drawCanvas = DrawCanvas.init();
+	LeftPanelButtons.run((tool) => {
+		drawCanvas.setTool(tool);
+	});
 }
 
 main();

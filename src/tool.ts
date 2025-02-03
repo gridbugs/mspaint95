@@ -1,3 +1,5 @@
+import * as CursorClass from './cursor-class';
+
 export const all = [
 	'FreeFormSelect',
 	'Select',
@@ -29,3 +31,9 @@ export function assertT(value: string): asserts value is T {
 	}
 }
 
+export function cursorClass(t: T): string {
+	switch (t) {
+		case 'Pencil': return CursorClass.pencil;
+		default: return CursorClass.select;
+	}
+}

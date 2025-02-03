@@ -68,7 +68,7 @@
 						<div data-tool="Magnifier" class="leftPanelButtonContainer">
 							<div class="leftPanelButton icon_Magnifier"></div>
 						</div>
-						<div data-tool="Pencil" class="leftPanelButtonContainer">
+						<div data-tool="Pencil" class="leftPanelButtonContainer leftPanelButtonContainerSelected">
 							<div class="leftPanelButton icon_Pencil"></div>
 						</div>
 						<div data-tool="Brush" class="leftPanelButtonContainer">
@@ -104,7 +104,17 @@
 				</div>
 				<div class="drawAreaContainer">
 					<div>
-						<canvas class="drawCanvas" width="640" height="480"></canvas>
+						<div class="drawAreaHandleContainer">
+							<canvas class="drawCanvas" width="640" height="480"></canvas>
+							<div class="drawAreaHandleFixed drawAreaHandleTopLeft"></div>
+							<div class="drawAreaHandleFixed drawAreaHandleTop"></div>
+							<div class="drawAreaHandleFixed drawAreaHandleTopRight"></div>
+							<div class="drawAreaHandleFixed drawAreaHandleLeft"></div>
+							<div class="drawAreaHandleFixed drawAreaHandleBottomLeft"></div>
+							<div class="drawAreaHandle drawAreaHandleBottom"></div>
+							<div class="drawAreaHandle drawAreaHandleBottomRight"></div>
+							<div class="drawAreaHandle drawAreaHandleRight"></div>
+						</div>
 					</div>
 				</div>
 				<div class="colorPickerContainer">
