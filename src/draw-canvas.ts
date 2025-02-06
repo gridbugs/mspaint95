@@ -1,12 +1,14 @@
 import * as Tool from './tool';
 import * as CursorClass from './cursor-class';
+import Palette from './palette';
 
 export default class DrawCanvas {
 	element: HTMLCanvasElement;
 	context: CanvasRenderingContext2D;
 	tool: Tool.T;
+	palette: Palette;
 
-	constructor(element: HTMLCanvasElement) {
+	constructor(element: HTMLCanvasElement, palette: Palette) {
 		const context = element.getContext('2d');
 		if (context === null) {
 			throw new Error('Failed to initialize canvas context');
@@ -16,6 +18,7 @@ export default class DrawCanvas {
 		const initialTool = 'Pencil';
 		this.tool = initialTool; 
 		this.setCursorClassForTool(initialTool);
+		this.palette = palette;
 	}
 
 	clear() {
@@ -45,7 +48,7 @@ export default class DrawCanvas {
 		if (!(drawCanvasElement instanceof HTMLCanvasElement)) {
 			throw new TypeError('Can\'t find draw canvas');
 		}
-		const drawCanvas = new DrawCanvas(drawCanvasElement);
+		const drawCanvas = new DrawCanvas(drawCanvasElement, Palette.init());
 		drawCanvas.clear();
 		return drawCanvas;
 	}

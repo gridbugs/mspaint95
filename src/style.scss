@@ -4,6 +4,7 @@ $borderLightGrey: #c3c7cb;
 $borderWhite: #ffffff;
 $borderBlack: #000000;
 $titleBlue: #0000aa;
+$backgroundGrey: #c3c7cb;
 
 @font-face {
   font-family: W95;
@@ -33,7 +34,7 @@ $titleBlue: #0000aa;
 }
 
 div.container {
-  background-color: #c3c7cb;
+  background-color: $backgroundGrey;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -189,7 +190,7 @@ div.leftPanelArea {
   left: 0;
   width: $scale * 56px;
   top: $scale * 45px;
-  bottom: $scale * 127px;
+  bottom: $scale * 75px;
   margin-left: $scale * 2px;
   margin-right: $scale * 2px;
 }
@@ -217,7 +218,7 @@ div.leftPanelArea > div.leftPanelBottom {
 div.drawAreaContainer {
   position: absolute;
   top: $scale * 45px;
-  bottom: $scale * 127px;
+  bottom: $scale * 75px;
   left: $scale * 59px;
   right: $scale * 5px;
   border-top: $scale * 1px solid $borderGrey;
@@ -237,6 +238,7 @@ div.drawAreaContainer > div {
   border-bottom: $scale * 1px solid $borderLightGrey;
   border-right: $scale * 1px solid $borderLightGrey;
   background-color: $borderGrey;
+  overflow: scroll;
 }
 
 
@@ -330,10 +332,10 @@ div.colorSwatches > div.colorSwatchesBottomRow {
 
 div.colorPickerContainer {
   position: absolute;
-  bottom: $scale * 89px;
+  top: $scale * 7px;
   height: $scale * 33px;
-  left: $scale * 2px;
-  right: $scale * 2px;
+  left: 0;
+  right: 0;
 }
 
 div.colorCellContainer {
@@ -418,11 +420,60 @@ div.currentColors > div.bg {
   top: $scale * 10px;
 }
 
+div.bottomPanelContainer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: $scale * 75px;
+  margin-left: $scale * 2px;
+  margin-right: $scale * 2px;
+  background-color: $backgroundGrey;
+}
+
+div.bottomPanelSeparator {
+  position: absolute;
+  border-top: $scale * 1px solid $borderGrey;
+  border-bottom: $scale * 1px solid $borderWhite;
+  left: 0;
+  right: 0;
+  bottom: $scale * 25px;
+}
+
+div.bottomTextArea {
+  position: absolute;
+  bottom: $scale * 2px;
+  height: $scale * 19px;
+  border-top: $scale * 1px solid $borderGrey;
+  border-left: $scale * 1px solid $borderGrey;
+  border-bottom: $scale * 1px solid $borderWhite;
+  border-right: $scale * 1px solid $borderWhite;
+}
+
+div.bottomTextArea > div {
+  padding-top: $scale * 3px;
+}
+
+div.helpTextArea {
+  left: $scale * 4px;
+  right: $scale * 230px;
+}
+
+div.coordArea {
+  width: $scale * 110px;
+  right: $scale * 116px;
+}
+
+div.rightTextArea {
+  width: $scale * 110px;
+  right: $scale * 2px;
+}
+
 div.leftPanel {
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 4px;
+  left: $scale * 4px;
   right: 0;
 }
 
