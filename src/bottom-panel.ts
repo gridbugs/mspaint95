@@ -3,6 +3,7 @@ export function setHelp(value: string) {
 	if (element === null) {
 		throw new Error('Missing element #helpText');
 	}
+
 	element.innerHTML = value;
 }
 
@@ -11,5 +12,5 @@ export function clearHelp() {
 }
 
 export function defaultHelp() {
-	setHelp("For Help, click Help Topics on the Help Menu.");
+	setHelp('For Help, click Help Topics on the Help Menu.');
 }
