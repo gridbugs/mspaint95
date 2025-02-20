@@ -1,18 +1,18 @@
-import Vec2 from './vec2';
+import * as Vec2 from './vec2';
 
 type Segment2Desc = {
-	major: Vec2;
-	minor: Vec2;
+	major: Vec2.Vec2;
+	minor: Vec2.Vec2;
 	majorDeltaAbs: number;
 	minorDeltaAbs: number;
 };
 
-function segment2Desc(start: Vec2, end: Vec2): Segment2Desc {
-	const delta = end.sub(start);
-	const deltaAbs = delta.abs();
+function segment2Desc(start: Vec2.Vec2, end: Vec2.Vec2): Segment2Desc {
+	const delta = Vec2.sub(end, start);
+	const deltaAbs = Vec2.abs(delta);
 	if (deltaAbs.x > deltaAbs.y) {
-		const major = delta.x > 0 ? new Vec2(1, 0) : new Vec2(-1, 0);
-		const minor = delta.y > 0 ? new Vec2(0, 1) : new Vec2(0, -1);
+		const major = delta.x > 0 ? Vec2.vec2(1, 0) : Vec2.vec2(-1, 0);
+		const minor = delta.y > 0 ? Vec2.vec2(0, 1) : Vec2.vec2(0, -1);
 		return {
 			major,
 			minor,
@@ -21,8 +21,8 @@ function segment2Desc(start: Vec2, end: Vec2): Segment2Desc {
 		};
 	}
 
-	const minor = delta.x > 0 ? new Vec2(1, 0) : new Vec2(-1, 0);
-	const major = delta.y > 0 ? new Vec2(0, 1) : new Vec2(0, -1);
+	const minor = delta.x > 0 ? Vec2.vec2(1, 0) : Vec2.vec2(-1, 0);
+	const major = delta.y > 0 ? Vec2.vec2(0, 1) : Vec2.vec2(0, -1);
 	return {
 		major,
 		minor,
@@ -31,8 +31,8 @@ function segment2Desc(start: Vec2, end: Vec2): Segment2Desc {
 	};
 }
 
-export function segment2(start: Vec2, end: Vec2): Vec2[] {
-	if (start.equal(end)) {
+export function segment2(start: Vec2.Vec2, end: Vec2.Vec2): Vec2.Vec2[] {
+	if (Vec2.equal(start, end)) {
 		return [start];
 	}
 
@@ -42,7 +42,7 @@ export function segment2(start: Vec2, end: Vec2): Vec2[] {
 		majorDeltaAbs,
 		minorDeltaAbs,
 	} = segment2Desc(start, end);
-	const minorOrdinal = major.add(minor); // Every minor step will be diagonal
+	const minorOrdinal = Vec2.add(major, minor); // Every minor step will be diagonal
 	const returnValue = [start];
 	let accumulator = 0;
 	let current = start;
@@ -50,9 +50,9 @@ export function segment2(start: Vec2, end: Vec2): Vec2[] {
 		accumulator += minorDeltaAbs;
 		if (accumulator > (majorDeltaAbs / 2)) {
 			accumulator -= majorDeltaAbs;
-			current = current.add(minorOrdinal);
+			current = Vec2.add(current, minorOrdinal);
 		} else {
-			current = current.add(major);
+			current = Vec2.add(current, major);
 		}
 
 		returnValue.push(current);

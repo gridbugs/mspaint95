@@ -19,19 +19,19 @@ export const all = [
 	'RoundedRectangle',
 ] as const;
 
-export type T = typeof all[number];
+export type Tool = typeof all[number];
 
-export function isT(value: string): value is T {
-	return all.includes(value as T);
+export function isTool(value: string): value is Tool {
+	return all.includes(value as Tool);
 }
 
-export function assertT(value: string): asserts value is T {
-	if (!isT(value)) {
+export function assertTool(value: string): asserts value is Tool {
+	if (!isTool(value)) {
 		throw new Error(`Invalid tool: ${value}`);
 	}
 }
 
-export function cursorClass(t: T): string {
+export function cursorClass(t: Tool): string {
 	switch (t) {
 		case 'Pencil': { return CursorClass.pencil;
 		}
@@ -41,7 +41,7 @@ export function cursorClass(t: T): string {
 	}
 }
 
-export function helpText(t: T): string {
+export function helpText(t: Tool): string {
 	switch (t) {
 		case 'FreeFormSelect': { return 'Selects a free-form part of the picture to move, copy, or edit.';
 		}

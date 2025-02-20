@@ -1,11 +1,11 @@
-export type T = {
-	r: number;
-	g: number;
-	b: number;
+export type Rgb = {
+	readonly r: number;
+	readonly g: number;
+	readonly b: number;
 };
 
 export function copyToImageDataArray(
-	rgb: T,
+	rgb: Rgb,
 	imageDataArray: Uint8ClampedArray,
 ) {
 	imageDataArray[0] = rgb.r;
@@ -14,7 +14,7 @@ export function copyToImageDataArray(
 	imageDataArray[3] = 255;
 }
 
-export function fromHexRgbString(hexString: string): T {
+export function fromHexRgbString(hexString: string): Rgb {
 	if (!hexString.startsWith('#') || hexString.length !== 7) {
 		throw new Error('Doesn not look like a hex rgb string');
 	}
@@ -29,6 +29,6 @@ function numberToHex(x: number): string {
 	return x.toString(16).padStart(2, '0');
 }
 
-export function toHexRgbString(rgb: T): string {
+export function toHexRgbString(rgb: Rgb): string {
 	return `#${numberToHex(rgb.r)}${numberToHex(rgb.g)}${numberToHex(rgb.b)}`;
 }

@@ -1,7 +1,7 @@
 import './style.scss';
 import * as LeftPanelButtons from './left-panel-buttons';
 import * as BottomPanel from './bottom-panel';
-import DrawCanvas from './draw-canvas';
+import * as DrawCanvas from './draw-canvas';
 import * as Tool from './tool';
 
 function preventContextMenuOnRightClick() {
@@ -13,7 +13,7 @@ function preventContextMenuOnRightClick() {
 export function main() {
 	preventContextMenuOnRightClick();
 	BottomPanel.defaultHelp();
-	const drawCanvas = DrawCanvas.init();
+	const drawCanvas = DrawCanvas.drawCanvas();
 	LeftPanelButtons.run(tool => {
 		BottomPanel.setHelp(Tool.helpText(tool));
 		drawCanvas.setTool(tool);

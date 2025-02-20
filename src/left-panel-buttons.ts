@@ -29,17 +29,17 @@ function setSelected(node: Element) {
 	node.classList.add(selected);
 }
 
-function getTool(node: HTMLElement): Tool.T {
+function getTool(node: HTMLElement): Tool.Tool {
 	const tool = node.dataset.tool;
 	if (tool === undefined) {
 		throw new Error(`tool is undefined on ${node.id}`);
 	} else {
-		Tool.assertT(tool);
+		Tool.assertTool(tool);
 		return tool;
 	}
 }
 
-export function run(select: (tool: Tool.T) => void) {
+export function run(select: (tool: Tool.Tool) => void) {
 	for (const node of allContainers) {
 		const tool = getTool(node);
 		node.addEventListener('mousedown', _ => {

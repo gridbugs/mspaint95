@@ -44,65 +44,54 @@ function getHtmlElementById(id: string): HTMLElement {
 	return element;
 }
 
-export default class Palette {
-	static init(): Palette {
-		const palette = new Palette();
-		palette.sync();
-		return palette;
+export type PaletteOps = {
+	fg: () => Rgb.Rgb;
+	bg: () => Rgb.Rgb;
+	color: (index: number) => Rgb.Rgb;
+};
+
+export function palette(): PaletteOps {
+	const nColors = 28;
+	const state = {
+		fg: Rgb.fromHexRgbString('#000000'),
+		bg: Rgb.fromHexRgbString('#ffffff'),
+		colors: defaultColors.map(s => Rgb.fromHexRgbString(s)),
+	};
+	if (state.colors.length !== nColors) {
+		throw new Error('Unexpected number of colors');
 	}
 
-	private fg: Rgb.T = Rgb.fromHexRgbString('#000000');
-	private bg: Rgb.T = Rgb.fromHexRgbString('#ffffff');
-	private readonly colors: Rgb.T[] = defaultColors.map(s => Rgb.fromHexRgbString(s));
-	private readonly elements: {
-		fg: HTMLElement;
-		bg: HTMLElement;
-		colors: HTMLElement[];
+	const elements = {
+		fg: getHtmlElementById('paletteFg'),
+		bg: getHtmlElementById('paletteBg'),
+		colors: ([] as HTMLElement[]),
+	};
+	const sync = () => {
+		elements.fg.style.backgroundColor = Rgb.toHexRgbString(state.fg);
+		elements.bg.style.backgroundColor = Rgb.toHexRgbString(state.bg);
+		for (let i = 0; i < nColors; i++) {
+			elements.colors[i].style.backgroundColor = Rgb.toHexRgbString(state.colors[i]);
+		}
 	};
 
-	private constructor() {
-		const nColors = 28;
-		if (this.colors.length !== nColors) {
-			throw new Error('Unexpected number of colors');
-		}
-
-		this.elements = {
-			fg: getHtmlElementById('paletteFg'),
-			bg: getHtmlElementById('paletteBg'),
-			colors: [],
-		};
-		for (let i = 0; i < nColors; i++) {
-			const element = getHtmlElementById(`palette-${i}`);
-			this.elements.colors.push(element);
-			element.addEventListener('mousedown', event => {
-				if (event.button === 0) {
-					this.fg = this.colors[i];
-					this.sync();
-				} else if (event.button === 2) {
-					this.bg = this.colors[i];
-					this.sync();
-				}
-			});
-		}
+	for (let i = 0; i < nColors; i++) {
+		const element = getHtmlElementById(`palette-${i}`);
+		elements.colors.push(element);
+		element.addEventListener('mousedown', event => {
+			if (event.button === 0) {
+				state.fg = state.colors[i];
+				sync();
+			} else if (event.button === 2) {
+				state.bg = state.colors[i];
+				sync();
+			}
+		});
 	}
 
-	getFg(): Rgb.T {
-		return this.fg;
-	}
-
-	getBg(): Rgb.T {
-		return this.bg;
-	}
-
-	get(index: number): Rgb.T {
-		return this.colors[index];
-	}
-
-	private sync() {
-		this.elements.fg.style.backgroundColor = Rgb.toHexRgbString(this.fg);
-		this.elements.bg.style.backgroundColor = Rgb.toHexRgbString(this.bg);
-		for (let i = 0; i < this.colors.length; i++) {
-			this.elements.colors[i].style.backgroundColor = Rgb.toHexRgbString(this.colors[i]);
-		}
-	}
+	sync();
+	return {
+		fg: () => state.fg,
+		bg: () => state.bg,
+		color: i => state.colors[i],
+	};
 }
