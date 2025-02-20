@@ -1,13 +1,9 @@
 import * as Tool from './tool';
+import * as ToolImpl from './tool-impl';
 import * as CursorClass from './cursor-class';
 import * as Palette from './palette';
-import * as Raster from './raster';
 import * as Vec2 from './vec2';
 import * as Rgb from './rgb';
-
-function mouseEventVec2(event: MouseEvent): Vec2.Vec2 {
-	return Vec2.vec2(event.layerX, event.layerY);
-}
 
 export type DrawCanvasOps = {
 	clear: () => void;
@@ -43,50 +39,67 @@ export function drawCanvas(): DrawCanvasOps {
 		for (const class_ of CursorClass.all) {
 			element.classList.remove(class_);
 		}
+
 		element.classList.add(Tool.cursorClass(tool));
 	};
 
 	let tool: Tool.Tool = 'Pencil';
 
+	let mousePositionRelativeToCanvas: Vec2.Vec2 = Vec2.vec2(0, 0);
+	let canvasSize = Vec2.vec2(0, 0);
+	let mouseDown = false;
+
+	const updateMousePosition = (event: MouseEvent) => {
+		const canvasBoundingRect = element.getBoundingClientRect();
+		mousePositionRelativeToCanvas = {
+			x: event.pageX - canvasBoundingRect.x,
+			y: event.pageY - canvasBoundingRect.y,
+		};
+		canvasSize = {
+			x: canvasBoundingRect.width,
+			y: canvasBoundingRect.height,
+		};
+	};
+
+	const toolInterface: ToolImpl.ToolInterface = {
+		currentMousePosition: () => mousePositionRelativeToCanvas,
+		canvasSize: () => canvasSize,
+		isMouseDown: () => mouseDown,
+		palette: () => palette,
+		setPixel,
+	};
+
+	let toolEventHandlers = ToolImpl.pencil(toolInterface);
 	const setTool = (tool_: Tool.Tool) => {
 		tool = tool_;
 		setCursorClassForTool(tool);
+		toolEventHandlers = ToolImpl.fromTool(tool)(toolInterface);
 	};
 
-	let currentMouseVec2 = Vec2.vec2(0, 0);
-	let mouseDown = false;
+	// The mousemove listener is registered to the document so the mouse can be
+	// tracked when it leaves the canvas. This allows tools such as the Pencil
+	// to draw lines that leave the canvas and then re-enter the canvas.
+	document.addEventListener('mousemove', event => {
+		updateMousePosition(event);
+		toolEventHandlers.mouseMove();
+	});
+
+	// The mousedown listener is only registered to the canvas as mouse presses
+	// off the canvas have no bearing on drawing.
 	element.addEventListener('mousedown', event => {
-		currentMouseVec2 = mouseEventVec2(event);
+		updateMousePosition(event);
 		mouseDown = true;
-		setPixel(currentMouseVec2, palette.fg());
+		toolEventHandlers.mouseDown();
 	});
-	element.addEventListener('mouseup', _ => {
+
+	// The mouseup listener is registered to the document to handle the case
+	// where a tool is dragged off the canvas before the mouse is released.
+	document.addEventListener('mouseup', _ => {
 		mouseDown = false;
-	});
-	element.addEventListener('mousemove', event => {
-		if (mouseDown) {
-			const v = mouseEventVec2(event);
-			for (const v_ of Raster.segment2(currentMouseVec2, v)) {
-				setPixel(v_, palette.fg());
-			}
-
-			currentMouseVec2 = v;
-		}
-	});
-	element.addEventListener('mouseout', event => {
-		if (mouseDown) {
-			const v = mouseEventVec2(event);
-			for (const v_ of Raster.segment2(currentMouseVec2, v)) {
-				setPixel(v_, palette.fg());
-			}
-
-			currentMouseVec2 = v;
-		}
-
-		mouseDown = false;
+		toolEventHandlers.mouseUp();
 	});
 
 	clear();
 
-	return { clear, setTool };
+	return {clear, setTool};
 }

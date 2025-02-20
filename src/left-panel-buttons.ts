@@ -20,6 +20,10 @@ function setPressing(node: Element) {
 	node.classList.add(pressing);
 }
 
+function isPressing(node: Element): boolean {
+	return node.classList.contains(pressing);
+}
+
 function clearPressing(node: Element) {
 	node.classList.remove(pressing);
 }
@@ -27,6 +31,10 @@ function clearPressing(node: Element) {
 function setSelected(node: Element) {
 	clearAll();
 	node.classList.add(selected);
+}
+
+function isSelected(node: Element): boolean {
+	return node.classList.contains(selected);
 }
 
 function getTool(node: HTMLElement): Tool.Tool {
@@ -43,11 +51,15 @@ export function run(select: (tool: Tool.Tool) => void) {
 	for (const node of allContainers) {
 		const tool = getTool(node);
 		node.addEventListener('mousedown', _ => {
-			setPressing(node);
+			if (!isSelected(node)) {
+				setPressing(node);
+			}
 		});
 		node.addEventListener('mouseup', _ => {
-			setSelected(node);
-			select(tool);
+			if (isPressing(node)) {
+				setSelected(node);
+				select(tool);
+			}
 		});
 		node.addEventListener('mouseout', _ => {
 			clearPressing(node);
